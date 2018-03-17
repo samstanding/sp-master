@@ -5,16 +5,17 @@ const Project = require('../models/Person').Project;
 
 const router = express.Router();
 
-router.post('/:id', (req,res) => {
-    let id = req.params.id;
-    if(req.isAuthenticated()) {
-        let newProject = new Project (req.body);
+router.post('/:username', (req,res) => {
+    let username = req.params.username;
+    console.log(req.body);
+    console.log(username);
+        let newProject = new Project (req.body.project);
         newProject.save((error, savedProject) => {
             if (error) {
                 console.log('error on project post:', error);
             } else {
-                Person.findByIdAndUpdate(
-                    {"_id": id}, 
+                Person.findOneAndUpdate(
+                    {"username": username}, 
                     {$push: {project: savedProject._id}},
                     (pusherror, doc) => {
                         if (pusherror) {
@@ -28,7 +29,7 @@ router.post('/:id', (req,res) => {
                 )
             }
         })
-    } else {
-        res.sendStatus(403);
     }
-})
+)
+
+module.exports = router;

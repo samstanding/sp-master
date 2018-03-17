@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import CONSTANTS from '../constants/';
 
-import Nav from '../components/Nav/Nav';
 
 import {
   fetchUser,
@@ -26,11 +26,79 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
+class Project {
+  constructor ( firstName, lastName, cohort, heroku, github, title, description) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.cohort = cohort;
+    this.heroku = heroku;
+    this.github = github;
+    this.title = title;
+    this.description = description;
+  }
+}
+
 class UserPage extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      project: 
+      {
+        firstName: '',
+        lastName: '',
+        cohort: '',
+        heroku: '',
+        github: '',
+        title: '',
+        description: '',
+      },
+      message: '',
+    };
     this.logout = this.logout.bind(this);
+    this.handleChangeFor=this.handleChangeFor.bind(this);
+    this.handleSubmit=this.handleSubmit.bind(this);
   }
+
+  handleChangeFor = propertyName => event => {
+    this.setState({
+      project: {
+        ...this.state.project,
+        [propertyName]: event.target.value,
+        }
+      });
+    }
+  
+
+  handleSubmit(event) {
+    event.preventDefault();
+    console.log(this.state);
+    console.log(this.props.user.userName);
+    
+    const request = new Request(`${CONSTANTS.apiBaseUrl}/project/${this.props.user.userName}`, {
+      method: 'POST',
+      headers: new Headers ({'Content-Type':'application/json'}),
+      body: JSON.stringify({
+       project: this.state.project,
+      }),
+    });
+
+    fetch(request) 
+    .then((response) => {
+      if(response.status === 201) {
+        this.props.history.push('/home');
+      } else {
+        this.setState({
+          message: 'that didn\'t work!',
+        });
+      }
+    })
+    .catch(() => {
+      this.setState({
+        message: 'that didn\'t work',
+      })
+    })
+  }
+
 
   componentDidMount() {
     this.props.dispatch(fetchUser());
@@ -59,6 +127,16 @@ class UserPage extends Component {
             Welcome, { this.props.user.userName }!
           </h1>
         <h2>This is where you'll upload a project</h2>
+        <form onSubmit={this.handleSubmit}>
+        <input placeholder="first name" onChange={this.handleChangeFor('firstName')} name="firstName" value={this.state.project.firstName} />
+        <input placeholder="last name" onChange={this.handleChangeFor('lastName')} name="lastName" value={this.state.project.lastName} />
+        <input placeholder="cohort" onChange={this.handleChangeFor('cohort')} name="cohort" value={this.state.project.cohort}/>
+        <input placeholder="heroku" onChange={this.handleChangeFor('heroku')} name="heroku" value={this.state.project.heroku}/>
+        <input placeholder="github" onChange={this.handleChangeFor('github')} name="github" value={this.state.project.github}/>
+        <input placeholder="title" onChange={this.handleChangeFor('title')} name="title" value={this.state.project.title}/>
+        <input placeholder="description" onChange={this.handleChangeFor('description')} name="description" value={this.state.project.description}/>
+        <input type="submit" value="Submit"/>
+          </form> 
           <button
             onClick={this.logout}
           >
