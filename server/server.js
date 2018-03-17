@@ -14,6 +14,7 @@ const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
+const projectRouter = require('./routes/project-router');
 
 // allows cross-origin requests from localhost:3000 when on development
 app.use(corsIfInDevelopment);
@@ -31,6 +32,7 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
+app.use('/api/project', projectRouter);
 
 // Serve static files
 app.use(express.static('build'));

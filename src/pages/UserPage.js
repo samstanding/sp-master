@@ -58,6 +58,7 @@ class UserPage extends Component {
           >
             Welcome, { this.props.user.userName }!
           </h1>
+        <h2>This is where you'll upload a project</h2>
           <button
             onClick={this.logout}
           >
@@ -69,7 +70,6 @@ class UserPage extends Component {
 
     return (
       <div>
-        <Nav />
         { content }
       </div>
     );

@@ -7,22 +7,25 @@ import {
 } from 'react-router-dom';
 
 import Header from './components/Header/Header';
+import Nav from './components/Nav/Nav';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import UserPage from './pages/UserPage';
-import InfoPage from './pages/InfoPage';
+import LandingPage from './pages/LandingPage';
 
 import './styles/main.css';
 
 const App = () => (
+  <Router>
   <div>
-    <Header title="Project Base" />
-    <Router>
+    <Header title="Prime Solo Projects" />
+    <Nav/>
+      
       <Switch>
         <Redirect exact from="/" to="/home" />
         <Route
           path="/home"
-          component={LoginPage}
+          component={LandingPage}
         />
         <Route
           path="/register"
@@ -33,12 +36,13 @@ const App = () => (
           component={UserPage}
         />
         <Route
-          path="/info"
-          component={InfoPage}
+          path="/login"
+          component={LoginPage}
         />
       </Switch>
-    </Router>
+    
   </div>
+  </Router>
 );
 
 export default App;
