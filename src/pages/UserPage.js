@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CONSTANTS from '../constants/';
+import {triggerPost} from '../redux/actions/projectActions';
 
 
 import {
@@ -26,17 +27,17 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-class Project {
-  constructor ( firstName, lastName, cohort, heroku, github, title, description) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.cohort = cohort;
-    this.heroku = heroku;
-    this.github = github;
-    this.title = title;
-    this.description = description;
-  }
-}
+// class Project {
+//   constructor ( firstName, lastName, cohort, heroku, github, title, description) {
+//     this.firstName = firstName;
+//     this.lastName = lastName;
+//     this.cohort = cohort;
+//     this.heroku = heroku;
+//     this.github = github;
+//     this.title = title;
+//     this.description = description;
+//   }
+// }
 
 class UserPage extends Component {
   constructor(props) {
@@ -74,29 +75,7 @@ class UserPage extends Component {
     console.log(this.state);
     console.log(this.props.user.userName);
     
-    const request = new Request(`${CONSTANTS.apiBaseUrl}/project/${this.props.user.userName}`, {
-      method: 'POST',
-      headers: new Headers ({'Content-Type':'application/json'}),
-      body: JSON.stringify({
-       project: this.state.project,
-      }),
-    });
-
-    fetch(request) 
-    .then((response) => {
-      if(response.status === 201) {
-        this.props.history.push('/home');
-      } else {
-        this.setState({
-          message: 'that didn\'t work!',
-        });
-      }
-    })
-    .catch(() => {
-      this.setState({
-        message: 'that didn\'t work',
-      })
-    })
+    this.props.dispatch(triggerPost(this.state.project, this.props.user.userName));
   }
 
 
