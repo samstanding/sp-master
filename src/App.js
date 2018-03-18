@@ -12,6 +12,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import UserPage from './pages/UserPage';
 import LandingPage from './pages/LandingPage';
+import ReviewPage from './pages/ReviewPage';
 
 import './styles/main.css';
 
@@ -38,6 +39,10 @@ const App = () => (
         <Route
           path="/login"
           component={LoginPage}
+        />
+        <Route 
+        path="/review"
+        component={ReviewPage}
         />
       </Switch>
     

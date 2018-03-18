@@ -62,10 +62,9 @@ class UserPage extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state);
-    console.log(this.props.user.userName);
-    
     this.props.dispatch(triggerPost(this.state.project, this.props.user.userName));
+    this.props.history.push('/review');
+
   }
 
 
@@ -96,17 +95,6 @@ class UserPage extends Component {
             Welcome, { this.props.user.userName }!
           </h1>
           <ProjectForm handleChangeFor={this.handleChangeFor} project={this.state.project} handleSubmit={this.handleSubmit} />
-        {/* // <h2>This is where you'll upload a project</h2>
-        // <form onSubmit={this.handleSubmit}>
-        // <input placeholder="first name" onChange={this.handleChangeFor('firstName')} name="firstName" value={this.state.project.firstName} />
-        // <input placeholder="last name" onChange={this.handleChangeFor('lastName')} name="lastName" value={this.state.project.lastName} />
-        // <input placeholder="cohort" onChange={this.handleChangeFor('cohort')} name="cohort" value={this.state.project.cohort}/>
-        // <input placeholder="heroku" onChange={this.handleChangeFor('heroku')} name="heroku" value={this.state.project.heroku}/>
-        // <input placeholder="github" onChange={this.handleChangeFor('github')} name="github" value={this.state.project.github}/>
-        // <input placeholder="title" onChange={this.handleChangeFor('title')} name="title" value={this.state.project.title}/>
-        // <input placeholder="description" onChange={this.handleChangeFor('description')} name="description" value={this.state.project.description}/>
-        // <input type="submit" value="Submit"/>
-        //   </form>  */}
           <button
             onClick={this.logout}
           >
