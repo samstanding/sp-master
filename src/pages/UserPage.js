@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CONSTANTS from '../constants/';
 import {triggerPost} from '../redux/actions/projectActions';
+import ProjectForm from '../components/ProjectForm/ProjectForm';
 
 
 import {
@@ -27,17 +28,6 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-// class Project {
-//   constructor ( firstName, lastName, cohort, heroku, github, title, description) {
-//     this.firstName = firstName;
-//     this.lastName = lastName;
-//     this.cohort = cohort;
-//     this.heroku = heroku;
-//     this.github = github;
-//     this.title = title;
-//     this.description = description;
-//   }
-// }
 
 class UserPage extends Component {
   constructor(props) {
@@ -105,17 +95,18 @@ class UserPage extends Component {
           >
             Welcome, { this.props.user.userName }!
           </h1>
-        <h2>This is where you'll upload a project</h2>
-        <form onSubmit={this.handleSubmit}>
-        <input placeholder="first name" onChange={this.handleChangeFor('firstName')} name="firstName" value={this.state.project.firstName} />
-        <input placeholder="last name" onChange={this.handleChangeFor('lastName')} name="lastName" value={this.state.project.lastName} />
-        <input placeholder="cohort" onChange={this.handleChangeFor('cohort')} name="cohort" value={this.state.project.cohort}/>
-        <input placeholder="heroku" onChange={this.handleChangeFor('heroku')} name="heroku" value={this.state.project.heroku}/>
-        <input placeholder="github" onChange={this.handleChangeFor('github')} name="github" value={this.state.project.github}/>
-        <input placeholder="title" onChange={this.handleChangeFor('title')} name="title" value={this.state.project.title}/>
-        <input placeholder="description" onChange={this.handleChangeFor('description')} name="description" value={this.state.project.description}/>
-        <input type="submit" value="Submit"/>
-          </form> 
+          <ProjectForm handleChangeFor={this.handleChangeFor} project={this.state.project} handleSubmit={this.handleSubmit} />
+        {/* // <h2>This is where you'll upload a project</h2>
+        // <form onSubmit={this.handleSubmit}>
+        // <input placeholder="first name" onChange={this.handleChangeFor('firstName')} name="firstName" value={this.state.project.firstName} />
+        // <input placeholder="last name" onChange={this.handleChangeFor('lastName')} name="lastName" value={this.state.project.lastName} />
+        // <input placeholder="cohort" onChange={this.handleChangeFor('cohort')} name="cohort" value={this.state.project.cohort}/>
+        // <input placeholder="heroku" onChange={this.handleChangeFor('heroku')} name="heroku" value={this.state.project.heroku}/>
+        // <input placeholder="github" onChange={this.handleChangeFor('github')} name="github" value={this.state.project.github}/>
+        // <input placeholder="title" onChange={this.handleChangeFor('title')} name="title" value={this.state.project.title}/>
+        // <input placeholder="description" onChange={this.handleChangeFor('description')} name="description" value={this.state.project.description}/>
+        // <input type="submit" value="Submit"/>
+        //   </form>  */}
           <button
             onClick={this.logout}
           >
