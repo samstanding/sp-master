@@ -11,7 +11,7 @@ export function callProject(payload) {
       withCredentials: true,
     };
   
-    return axios.post(`${CONSTANTS.apiBaseUrl}/project/${payload.username}`, body, config)
+    return axios.post(`${CONSTANTS.apiBaseUrl}/projects/${payload.username}`, body, config)
       .then(response => response.data)
       .catch((error) => {
         throw error.response || error;

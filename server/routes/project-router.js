@@ -32,4 +32,16 @@ router.post('/:username', (req,res) => {
     }
 )
 
+router.get('/', (req, res) => {
+    Project.find({},
+    (error, foundProjects) => {
+        if(error) {
+            console.log('error on get: ', error);
+            res.sendStatus(500);
+        } else {
+            res.send(foundProjects);
+        }
+    })
+});
+
 module.exports = router;

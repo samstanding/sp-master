@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import CONSTANTS from '../constants/';
 import {triggerPost} from '../redux/actions/projectActions';
 import ProjectForm from '../components/ProjectForm/ProjectForm';
 
@@ -74,7 +73,7 @@ class UserPage extends Component {
 
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
-      this.props.history.push('home');
+      this.props.history.push('login');
     }
   }
 

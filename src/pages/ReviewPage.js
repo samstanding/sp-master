@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 
 class ReviewPage extends Component {
@@ -11,8 +12,8 @@ class ReviewPage extends Component {
         return (
             <div>
             <h1>This is where a user will their project</h1>
-            <button>Project Good</button>
-            <button>Project Bad</button>
+            <Link to="/home"> Project Good</Link>
+            <Link to ="/user">Project Bad I'd like to go back</Link>
             </div>
         );
     }

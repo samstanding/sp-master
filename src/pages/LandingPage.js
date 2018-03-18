@@ -1,38 +1,43 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-// import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import CONSTANTS from '../constants/';
+import axios from 'axios';
 
 
-// const propTypes = {
-//   fetchUser: PropTypes.func,
-//   user: PropTypes.shape({ userName: PropTypes.string, isLoading: PropTypes.bool }),
-//   history: PropTypes.shape({ push: PropTypes.func }),
-// };
+const propTypes = {
+  history: PropTypes.shape({ push: PropTypes.func }),
+};
 
-// const defaultProps = {
-//   fetchUser: () => {},
-//   user: { userName: null, isLoading: true },
-//   history: { push: () => {} },
-// };
+const defaultProps = {
+  history: { push: () => {} },
+};
 
-// const mapStateToProps = state => ({
-//   user: state.user,
-// });
-
-// const mapDispatchToProps = {
-//   fetchUser,
-// };
-
+ 
 class LandingPage extends Component {
-  // componentDidMount() {
-  //   this.props.fetchUser();
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      projects: [],
+    }
+    
+  }
+ 
+  getProjects () {
+    axios.get(`${CONSTANTS.apiBaseUrl}/projects`)
+    .then(response => {
+      console.log(response.data);
+      this.setState({
+        projects: response.data,
+      })
+    }).catch(error => {
+      console.log('error on projects get: ', error);
+    }) 
+  }
 
-  // componentDidUpdate() {
-  //   if (!this.props.user.isLoading && this.props.user.userName === null) {
-  //     this.props.history.push('home');
-  //   }
-  // }
+  componentDidMount() {
+    this.getProjects();
+  }
 
   render() {
     // let content = null;
@@ -56,8 +61,8 @@ class LandingPage extends Component {
   }
 }
 
-// LandingPage.propTypes = propTypes;
-// LandingPage.defaultProps = defaultProps;
+LandingPage.propTypes = propTypes;
+LandingPage.defaultProps = defaultProps;
 
-// this allows us to use <App /> in index.js
+
 export default LandingPage;
