@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CONSTANTS from '../constants/';
 import axios from 'axios';
+import ProjectCards from '../components/ProjectCard/ProjectCard';
 
 
 const propTypes = {
@@ -20,7 +21,7 @@ class LandingPage extends Component {
     this.state = {
       projects: [],
     }
-    
+    this.getProjects=this.getProjects.bind(this);
   }
  
   getProjects () {
@@ -40,22 +41,11 @@ class LandingPage extends Component {
   }
 
   render() {
-    // let content = null;
-
-    // if (this.props.user.userName) {
-    //   content = (
-    //     <div>
-    //       <p>
-    //         Info Page
-    //       </p>
-    //     </div>
-    //   );
-    // }
+  
 
     return (
       <div>
-        <h2>Welcome this our landing page</h2>
-        <h3>We have cluster flies and I....</h3>
+        <ProjectCards projects={this.state.projects}/>
       </div>
     );
   }
