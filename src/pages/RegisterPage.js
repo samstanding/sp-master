@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
 import CONSTANTS from '../constants/';
+import RegisterForm from '../components/RegisterForm/RegisterForm';
 
 const propTypes = {
   history: PropTypes.shape({ push: PropTypes.func }),
@@ -26,7 +26,6 @@ class RegisterPage extends Component {
       message: '',
     };
 
-    // this.handleInputChange = this.handleInputChange.bind(this);
     this.registerUser = this.registerUser.bind(this);
   }
 
@@ -71,16 +70,6 @@ class RegisterPage extends Component {
     }
   }
 
-  // handleInputChange(event) {
-  //   const { target } = event;
-  //   const value = target.type === 'checkbox' ? target.checked : target.value;
-  //   const { name } = target;
-
-  //   this.setState({
-  //     [name]: value,
-  //   });
-  // }
-
   handleChangeFor = propertyName => event => {
     this.setState({
         ...this.state,
@@ -106,7 +95,8 @@ class RegisterPage extends Component {
     return (
       <div>
         {this.renderAlert()}
-        <form onSubmit={this.registerUser}>
+        <RegisterForm handleChangeFor={this.handleChangeFor} state={this.state} registerUser={this.registerUser} />
+        {/* <form onSubmit={this.registerUser}>
           <h1>Register User</h1>
           <div>
             <label htmlFor="username">
@@ -169,7 +159,7 @@ class RegisterPage extends Component {
             />
             <Link to="/login">Cancel</Link>
           </div>
-        </form>
+        </form> */}
       </div>
     );
   }
