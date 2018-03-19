@@ -11,11 +11,11 @@ class ProjectCards extends Component {
         return ( 
             <MuiThemeProvider>
                 <div>
-            {this.props.projects.map( (project, index) => (
+            {this.props.list.map( (project, index) => (
              <Card key={index}>
              <CardHeader 
              title ={project.title}
-             subtitle={`${project.firstName} ${project.lastName}`}
+             subtitle={`${project.person[0].firstName} ${project.person[0].lastName}`}
              />
               <CardText>
                 {project.description}

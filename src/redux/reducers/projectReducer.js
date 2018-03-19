@@ -9,3 +9,4 @@ const sendProject = (state = '', action) => {
     }
 };
 
+export default sendProject;

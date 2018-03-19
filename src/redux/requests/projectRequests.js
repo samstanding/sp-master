@@ -17,3 +17,16 @@ export function callProject(payload) {
         throw error.response || error;
       });
   }
+
+  export function getProjects () {
+      const config = {
+        headers: { 'Content-Type': 'application/json' },
+        withCredentials: true,
+      };
+
+      return axios.get(`${CONSTANTS.apiBaseUrl}/projects`, config)
+      .then(response => {
+        console.log(response.data);
+        return response.data;
+      }).catch((error) => { throw error;}); 
+  }
