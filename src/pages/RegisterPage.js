@@ -26,7 +26,7 @@ class RegisterPage extends Component {
       message: '',
     };
 
-    this.handleInputChange = this.handleInputChange.bind(this);
+    // this.handleInputChange = this.handleInputChange.bind(this);
     this.registerUser = this.registerUser.bind(this);
   }
 
@@ -71,15 +71,22 @@ class RegisterPage extends Component {
     }
   }
 
-  handleInputChange(event) {
-    const { target } = event;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const { name } = target;
+  // handleInputChange(event) {
+  //   const { target } = event;
+  //   const value = target.type === 'checkbox' ? target.checked : target.value;
+  //   const { name } = target;
 
+  //   this.setState({
+  //     [name]: value,
+  //   });
+  // }
+
+  handleChangeFor = propertyName => event => {
     this.setState({
-      [name]: value,
-    });
-  }
+        ...this.state,
+        [propertyName]: event.target.value,
+      });
+    }
 
   renderAlert() {
     if (this.state.message !== '') {
@@ -108,7 +115,7 @@ class RegisterPage extends Component {
                 type="text"
                 name="username"
                 value={this.state.username}
-                onChange={this.handleInputChange}
+                onChange={this.handleChangeFor('username')}
               />
             </label>
           </div>
@@ -119,7 +126,7 @@ class RegisterPage extends Component {
                 type="password"
                 name="password"
                 value={this.state.password}
-                onChange={this.handleInputChange}
+                onChange={this.handleChangeFor('password')}
               />
             </label>
             <label htmlFor="firstName">
@@ -128,7 +135,7 @@ class RegisterPage extends Component {
                 type="text"
                 name="firstName"
                 value={this.state.firstName}
-                onChange={this.handleInputChange}
+                onChange={this.handleChangeFor('firstName')}
               />
             </label>
             <label htmlFor="lastName">
@@ -137,7 +144,7 @@ class RegisterPage extends Component {
                 type="text"
                 name="lastName"
                 value={this.state.lastName}
-                onChange={this.handleInputChange}
+                onChange={this.handleChangeFor('lastName')}
               />
             </label>
             <label htmlFor="cohort">
@@ -146,10 +153,10 @@ class RegisterPage extends Component {
                 type="text"
                 name="cohort"
                 value={this.state.cohort}
-                onChange={this.handleInputChange}
+                onChange={this.handleChangeFor('cohort')}
               />
             </label>
-            <select value={this.state.program}>
+            <select value={this.state.program} onChange={this.handleChangeFor('program')}>
               <option value="Full Stack">Full Stack</option>
               <option value="UX">User Experience</option>
               </select>
