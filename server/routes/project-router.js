@@ -22,12 +22,20 @@ router.post('/:username', (req,res) => {
                             console.log('error on pushing project to Person:', pusherror);
                             res.sendStatus(500);
                         } else {
-                            console.log('updated person with project:', doc);
-                            res.sendStatus(200);
+                            Project.findOneAndUpdate(
+                                {"_id": savedProject._id}, 
+                                {$push: {user: savedProjdocect._id}},
+                                (projectpusherror, projectDoc)=> {
+                                if (projectpusherror) {
+                                    console.log('error pushing user onto Project ', projectpusherror);
+                                    res.sendStatus(500);
+                                } else {
+                                    res.sendStatus(200);
+                                }
+                                })
                         }
                     }
-                )
-            }
+                )}
         })
     }
 )
