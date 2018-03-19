@@ -34,10 +34,8 @@ class UserPage extends Component {
     this.state = {
       project: 
       {
-        firstName: '',
-        lastName: '',
-        cohort: '',
-        heroku: '',
+        appHosted: '',
+        appHosted2: '',
         github: '',
         title: '',
         description: '',

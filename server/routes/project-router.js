@@ -24,12 +24,13 @@ router.post('/:username', (req,res) => {
                         } else {
                             Project.findOneAndUpdate(
                                 {"_id": savedProject._id}, 
-                                {$push: {user: savedProjdocect._id}},
+                                {$push: {person: doc._id}},
                                 (projectpusherror, projectDoc)=> {
                                 if (projectpusherror) {
                                     console.log('error pushing user onto Project ', projectpusherror);
                                     res.sendStatus(500);
                                 } else {
+                                    // console.log(savedProject);
                                     res.sendStatus(200);
                                 }
                                 })
@@ -41,12 +42,12 @@ router.post('/:username', (req,res) => {
 )
 
 router.get('/', (req, res) => {
-    Project.find({},
-    (error, foundProjects) => {
+    Project.find({}).populate('person').exec((error, foundProjects) => {
         if(error) {
             console.log('error on get: ', error);
             res.sendStatus(500);
         } else {
+            // console.log(foundProjects);
             res.send(foundProjects);
         }
     })

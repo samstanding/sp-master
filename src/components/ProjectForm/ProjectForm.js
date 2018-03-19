@@ -10,13 +10,11 @@ class ProjectFrom extends Component {
                 <div>
                 <h2>This is where you'll upload a project</h2>
                 <form onSubmit={this.props.handleSubmit}>
-                <input placeholder="first name" onChange={this.props.handleChangeFor('firstName')} name="firstName" value={this.props.project.firstName} />
-                <input placeholder="last name" onChange={this.props.handleChangeFor('lastName')} name="lastName" value={this.props.project.lastName} />
-                <input placeholder="cohort" onChange={this.props.handleChangeFor('cohort')} name="cohort" value={this.props.project.cohort}/>
-                <input placeholder="heroku" onChange={this.props.handleChangeFor('heroku')} name="heroku" value={this.props.project.heroku}/>
-                <input placeholder="github" onChange={this.props.handleChangeFor('github')} name="github" value={this.props.project.github}/>
                 <input placeholder="title" onChange={this.props.handleChangeFor('title')} name="title" value={this.props.project.title}/>
-                <input placeholder="description" onChange={this.props.handleChangeFor('description')} name="description" value={this.props.project.description}/>
+                <input placeholder="url to host website" onChange={this.props.handleChangeFor('appHosted')} name="appHosted" value={this.props.project.appHosted}/>
+                <input placeholder="second url to host website" onChange={this.props.handleChangeFor('appHosted2')} name="appHosted2" value={this.props.project.appHosted2}/>
+                <input placeholder="github" onChange={this.props.handleChangeFor('github')} name="github" value={this.props.project.github}/>
+                <textarea placeholder="description" onChange={this.props.handleChangeFor('description')} name="description" value={this.props.project.description}/>
                 <input type="submit" value="Submit"/>
                   </form> 
                   </div>

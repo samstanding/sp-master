@@ -15,7 +15,7 @@ const PersonSchema = new Schema({
 });
 
 const ProjectSchema = new Schema ({
-  user: {type: mongoose.Schema.ObjectId, ref: 'Person'},
+  person: [{type: mongoose.Schema.ObjectId, ref: 'Person'}],
   appHosted: String,
   appHosted2: String,
   github: String,
