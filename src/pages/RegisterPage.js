@@ -19,6 +19,10 @@ class RegisterPage extends Component {
     this.state = {
       username: '',
       password: '',
+      firstName: '',
+      lastName: '',
+      cohort: '',
+      program:'',
       message: '',
     };
 
@@ -40,6 +44,10 @@ class RegisterPage extends Component {
         body: JSON.stringify({
           username: this.state.username,
           password: this.state.password,
+          firstName: this.state.firstName,
+          lastName: this.state.lastName,
+          cohort: this.state.cohort,
+          program: this.state.program,
         }),
       });
 
@@ -114,6 +122,37 @@ class RegisterPage extends Component {
                 onChange={this.handleInputChange}
               />
             </label>
+            <label htmlFor="firstName">
+              First Name:
+              <input
+                type="text"
+                name="firstName"
+                value={this.state.firstName}
+                onChange={this.handleInputChange}
+              />
+            </label>
+            <label htmlFor="lastName">
+              Last Name:
+              <input
+                type="text"
+                name="lastName"
+                value={this.state.lastName}
+                onChange={this.handleInputChange}
+              />
+            </label>
+            <label htmlFor="cohort">
+              Cohort:
+              <input
+                type="text"
+                name="cohort"
+                value={this.state.cohort}
+                onChange={this.handleInputChange}
+              />
+            </label>
+            <select value={this.state.program}>
+              <option value="Full Stack">Full Stack</option>
+              <option value="UX">User Experience</option>
+              </select>
           </div>
           <div>
             <input
