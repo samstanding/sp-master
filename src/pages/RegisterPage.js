@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import CONSTANTS from '../constants/';
 import RegisterForm from '../components/RegisterForm/RegisterForm';

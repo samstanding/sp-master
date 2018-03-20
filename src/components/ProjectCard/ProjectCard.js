@@ -4,9 +4,7 @@ import FlatButton from 'material-ui/FlatButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class ProjectCards extends Component {
-    constructor(props) {
-        super(props);
-    }
+  
     render() {
         return ( 
             <MuiThemeProvider>

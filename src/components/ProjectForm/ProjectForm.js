@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 
 class ProjectFrom extends Component {
-    constructor(props) {
-        super(props);
-        
-        }
+
         render() {
             return ( 
                 <div>

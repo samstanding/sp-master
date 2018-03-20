@@ -3,10 +3,7 @@ import { Link } from 'react-router-dom';
 
 
 class ReviewPage extends Component {
-    constructor(props) {
-        super(props);
-
-    }
+  
 
     render() {
         return (
