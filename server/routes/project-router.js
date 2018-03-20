@@ -2,7 +2,7 @@ const express = require('express');
 
 const Person = require('../models/Person').Person;
 const Project = require('../models/Person').Project;
-const UserInfo = require('../modules/person-no-pw');
+const User = require('../models/Person').User;
 
 const router = express.Router();
 
@@ -15,7 +15,7 @@ router.post('/:username', (req,res) => {
             if (error) {
                 console.log('error on project post:', error);
             } else {
-                Person.findOneAndUpdate(
+                User.findOneAndUpdate(
                     {"username": username}, 
                     {$push: {project: savedProject._id}},
                     (pusherror, doc) => {

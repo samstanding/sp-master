@@ -1,6 +1,7 @@
 const express = require('express');
 const encryptLib = require('../modules/encryption');
 const Person = require('../models/Person').Person;
+const User =  require('../models/Person').User;
 const userStrategy = require('../strategies/user.strategy');
 
 const router = express.Router();
@@ -30,9 +31,14 @@ router.post('/register', (req, res, next) => {
   const lastName = req.body.lastName;
   const cohort = req.body.cohort;
   const program = req.body.program;
-  const newPerson = new Person({ username, password, firstName, lastName, cohort, program });
+  const newPerson = new Person({ username, password });
+  const newUser = new User ({username, firstName, lastName, cohort, program })
   newPerson.save()
-    .then(() => { res.sendStatus(201); })
+    .then(() => { 
+      newUser.save() 
+      .then(() => { res.sendStatus(201); })
+      .catch((err) => {next(err); });
+    })
     .catch((err) => { next(err); });
 });
 
