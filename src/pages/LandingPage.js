@@ -44,6 +44,7 @@ class LandingPage extends Component {
 
     return (
       <div>
+        <p>{JSON.stringify(this.props.list)}</p>
         {content}
         </div>
     );

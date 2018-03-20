@@ -2,6 +2,7 @@ const express = require('express');
 
 const Person = require('../models/Person').Person;
 const Project = require('../models/Person').Project;
+const UserInfo = require('../modules/person-no-pw');
 
 const router = express.Router();
 
@@ -47,10 +48,12 @@ router.get('/', (req, res) => {
             console.log('error on get: ', error);
             res.sendStatus(500);
         } else {
-            // console.log(foundProjects);
+            console.log(foundProjects);
             res.send(foundProjects);
         }
     })
 });
+
+
 
 module.exports = router;
