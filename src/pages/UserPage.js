@@ -3,12 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {triggerPost} from '../redux/actions/projectActions';
 import ProjectForm from '../components/ProjectForm/ProjectForm';
-
-
-import {
-  fetchUser,
-} from '../redux/actions/userActions';
-
+import {fetchUser} from '../redux/actions/userActions';
 import { triggerLogout } from '../redux/actions/loginActions';
 
 const propTypes = {

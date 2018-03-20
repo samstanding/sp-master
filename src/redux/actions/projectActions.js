@@ -8,6 +8,12 @@ export const PROJECT_ACTIONS = {
     GET_PROJECTS_DONE: "GET_PROJECTS_DONE",
     GET_PROJECTS_SET: "GET_PROJECTS_SET",
     GET_PROJECTS_FAILED: "GET_PROJECTS_FAILED",
+    GET_USER_PROJECT: "GET_USER_PROJECT",
+    GET_USER_PROJECT_START: "GET_USER_PROJECT_START",
+    GET_USER_PROJECT_DONE: "GET_USER_PROJECT_DONE",
+    GET_USER_PROJECT_SET: "GET_USER_PROJECT_SET",
+    GET_USER_PROJECT_FAILED: "GET_USER_PROJECT_FAILED",
+
 }
 
 export const triggerPost = (project, username) => ({
@@ -18,7 +24,13 @@ export const triggerPost = (project, username) => ({
     },
   });
 
-  export function fetchProjects() {
+  export const fetchProjects = () => {
     return {type: PROJECT_ACTIONS.GET_PROJECTS};
   }
 
+  export const fetchUserProject = (username) => ({
+    type: PROJECT_ACTIONS.GET_USER_PROJECT,
+    payload: {
+      username
+    },
+  });

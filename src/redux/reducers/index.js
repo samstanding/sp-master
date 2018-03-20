@@ -3,6 +3,7 @@ import user from './userReducer';
 import login from './loginReducer';
 import sendProject from './projectReducer';
 import projects from './fetchProjectReducer';
+import userProject from './getUserProjectReducer';
 
 
 const store = combineReducers({
@@ -10,6 +11,7 @@ const store = combineReducers({
   login,
   projects,
   sendProject,
+  userProject,
 });
 
 export default store;

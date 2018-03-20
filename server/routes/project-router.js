@@ -48,12 +48,25 @@ router.get('/', (req, res) => {
             console.log('error on get: ', error);
             res.sendStatus(500);
         } else {
-            console.log(foundProjects);
             res.send(foundProjects);
         }
     })
 });
 
+router.get('/:username', (req, res) => {
+    let username = req.params.username;
+    User.findOneAndUpdate({"username": username}).populate('project').exec((error, foundUsers) => {
+        if(error) {
+            console.log('error on get user project', error);
+            res.sendStatus(500);
+        } else {
+            console.log('we in this');
+            
+            console.log(foundUser);
+            res.send(foundUser);
+        }
+    })
+})
 
 
 module.exports = router;

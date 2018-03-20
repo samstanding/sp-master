@@ -3,6 +3,7 @@ import userSaga from './userSaga';
 import loginSaga from './loginSaga';
 import projectSaga from './projectSaga';
 import getProjectsSaga from './fetchProjectSaga';
+import getUserProjectSaga from './getUserProjectSaga';
 
 
 export default function* rootSaga() {
@@ -11,6 +12,7 @@ export default function* rootSaga() {
     loginSaga(),
     projectSaga(),
     getProjectsSaga(),
+    getUserProjectSaga(),
     // watchIncrementAsync()
   ]);
 }
