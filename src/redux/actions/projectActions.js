@@ -28,9 +28,9 @@ export const triggerPost = (project, username) => ({
     return {type: PROJECT_ACTIONS.GET_PROJECTS};
   }
 
-  export const fetchUserProject = (username) => ({
+  export const fetchUserProject = () => ({
     type: PROJECT_ACTIONS.GET_USER_PROJECT,
-    payload: {
-      username
-    },
+    // payload: {
+    //   username
+    // },
   });
