@@ -70,6 +70,7 @@ router.get('/:username', (req, res) => {
 
 router.put('/:id', (req, res) => {
     console.log(req.params.id);
+    console.log(req.body);
     let id = req.params.id;
     let editedProject = req.body;
     Project.findByIdAndUpdate(

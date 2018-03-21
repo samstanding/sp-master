@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import axios from 'axios';
+import CONSTANTS from './../constants';
 import ProjectForm from '../components/ProjectForm/ProjectForm';
 import {fetchUser} from '../redux/actions/userActions';
 import { triggerLogout } from '../redux/actions/loginActions';
-import {triggerPut} from  '../redux/actions/projectActions';
+// import {triggerPut} from  '../redux/actions/projectActions';
 import {fetchProjects} from '../redux/actions/projectActions';
+
+
 
 const propTypes = {
   dispatch: PropTypes.func,
@@ -44,6 +48,24 @@ class EditPage extends Component {
     this.logout = this.logout.bind(this);
     this.handleChangeFor=this.handleChangeFor.bind(this);
     this.handleSubmit=this.handleSubmit.bind(this);
+    this.editProject = this.editProject.bind(this);
+  }
+
+  editProject(newProject) {
+    let projectId;
+    if (this.props.list) {
+         this.props.list.map((project) => {
+        if (project.person[0].username == this.props.user.userName) {
+            projectId = project._id;
+        }
+    })
+        console.log(projectId);
+    axios.put(`${CONSTANTS.apiBaseUrl}/projects/${projectId}`, newProject)
+    .then(response => response)
+    .catch(error => {
+        console.log('error on put', error);
+    }) 
+}
   }
 
   handleChangeFor = propertyName => event => {
@@ -58,7 +80,8 @@ class EditPage extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.dispatch(triggerPut(this.state.project, '5ab2c248928506b89122827a'));
+    // this.props.dispatch(triggerPut(this.state.project, this.getProjectId()));
+    this.editProject(this.state.project);
     this.props.history.push('/review');
 
   }
@@ -80,13 +103,8 @@ class EditPage extends Component {
     // this.props.history.push('home');
   }
 
-  getProjectId () {
-    this.props.list.map((project) => {
-        if (project.person[0].username == this.props.user.userName) {
-            this.projectId = project._id;
-        }
-    });
-  }
+ 
+  
 
   render() {
     let content = null;
