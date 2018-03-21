@@ -13,6 +13,7 @@ import RegisterPage from './pages/RegisterPage';
 import UserPage from './pages/UserPage';
 import LandingPage from './pages/LandingPage';
 import ReviewPage from './pages/ReviewPage';
+import EditPage from './pages/EditPage';
 
 import './styles/main.css';
 
@@ -43,6 +44,10 @@ const App = () => (
         <Route 
         path="/review"
         component={ReviewPage}
+        />
+        <Route 
+        path="/edit"
+        component={EditPage}
         />
       </Switch>
     

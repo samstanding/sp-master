@@ -66,7 +66,7 @@ class ReviewPage extends Component {
             <h1>This is where a {this.props.user.userName} will review their project</h1>
             {content}
             <Link to="/home"> Project Good</Link>
-            <Link to ="/user">Project Bad I'd like to go back</Link>
+            <Link to ="/edit">Project Bad I'd like to go back</Link>
             </div>
         );
     
