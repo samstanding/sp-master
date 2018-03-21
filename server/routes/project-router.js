@@ -62,8 +62,26 @@ router.get('/:username', (req, res) => {
         } else {
             console.log('we in this');
             
-            console.log(foundUser);
+            // console.log(foundUser);
             res.send(foundUser);
+        }
+    })
+})
+
+router.put('/:id', (req, res) => {
+    console.log(req.params.id);
+    let id = req.params.id;
+    let editedProject = req.body;
+    Project.findByIdAndUpdate(
+    {"_id": id},
+    {$set: editedProject},
+    (error, updatedProject) => {
+        if(error) {
+            console.log('error on editing projecting', error);
+            res.sendStatus(500);
+        } else {
+            console.log(updatedProject);
+            res.sendStatus(200);
         }
     })
 })

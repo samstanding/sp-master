@@ -11,7 +11,6 @@ router.get('/', (req, res) => {
   // check if logged in
   if (req.isAuthenticated()) {
     // send back user object from database
-    console.log(req.user);
     
     res.send(req.user);
   } else {

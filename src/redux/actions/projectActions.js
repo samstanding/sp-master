@@ -39,10 +39,10 @@ export const triggerPost = (project, username) => ({
     },
   });
 
-  export const triggerPut = (project, username) => ({
+  export const triggerPut = (project, projectId) => ({
     type:PROJECT_ACTIONS.EDIT_PROJECT,
     payload: {
       project,
-      username,
+      projectId,
     },
   });

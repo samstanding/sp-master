@@ -5,21 +5,25 @@ import ProjectForm from '../components/ProjectForm/ProjectForm';
 import {fetchUser} from '../redux/actions/userActions';
 import { triggerLogout } from '../redux/actions/loginActions';
 import {triggerPut} from  '../redux/actions/projectActions';
+import {fetchProjects} from '../redux/actions/projectActions';
 
 const propTypes = {
   dispatch: PropTypes.func,
   user: PropTypes.shape({ userName: PropTypes.string, isLoading: PropTypes.bool }),
+  list:PropTypes.array,
   history: PropTypes.shape({ push: PropTypes.func }),
 };
 
 const defaultProps = {
   dispatch: () => {},
   user: { userName: null, isLoading: true },
+  list: {projects: []},
   history: { push: () => {} },
 };
 
 const mapStateToProps = state => ({
   user: state.user,
+  list: state.projects.projects,
 });
 
 
@@ -54,7 +58,7 @@ class EditPage extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.dispatch(triggerPut(this.state.project, this.props.user.userName));
+    this.props.dispatch(triggerPut(this.state.project, '5ab2c248928506b89122827a'));
     this.props.history.push('/review');
 
   }
@@ -62,6 +66,7 @@ class EditPage extends Component {
 
   componentDidMount() {
     this.props.dispatch(fetchUser());
+    this.props.dispatch(fetchProjects());
   }
 
   componentDidUpdate() {
@@ -75,10 +80,26 @@ class EditPage extends Component {
     // this.props.history.push('home');
   }
 
+  getProjectId () {
+    this.props.list.map((project) => {
+        if (project.person[0].username == this.props.user.userName) {
+            this.projectId = project._id;
+        }
+    });
+  }
+
   render() {
     let content = null;
+    let projectId;
 
-    if (this.props.user.userName) {
+   
+
+    if (this.props.list) {
+         this.props.list.map((project) => {
+        if (project.person[0].username == this.props.user.userName) {
+            projectId = project._id;
+        }
+    });
       content = (
         <div>
           <h1
@@ -87,7 +108,8 @@ class EditPage extends Component {
             Welcome, { this.props.user.userName }!
           </h1>
           <h2>Here's where you can make changes to your project inputs</h2>
-          <ProjectForm handleChangeFor={this.handleChangeFor} project={this.state.project} handleSubmit={this.handleSubmit} />
+          <p>{JSON.stringify(projectId)}</p>
+          <ProjectForm handleChangeFor={this.handleChangeFor} project={this.state.project} handleSubmit={this.handleSubmit} projectId={this.projectId} />
           <button
             onClick={this.logout}
           >

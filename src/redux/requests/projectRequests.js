@@ -40,3 +40,19 @@ export function callProject(payload) {
       .then(response => response.data)
       .catch((error) => { throw error;});
   }
+
+  export function editProject(payload) {
+    const body = ({
+      project: payload.project
+    });
+    const config = {
+      headers: { 'Content-Type': 'application/json' },
+      withCredentials: true,
+    };
+
+    return axios.put(`${CONSTANTS.apiBaseUrl}/projects/${payload.projectId}`, body, config)
+    .then(response => response.data)
+    .catch((error) => {
+      throw error.response || error;
+    });
+  }
