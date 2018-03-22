@@ -1,66 +1,61 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import TextField from 'material-ui/TextField';
-// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import TextField from 'material-ui/TextField';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 
 class RegisterForm extends Component {
 
     render() {
         return (
-          // <MuiThemeProvider>
+          <MuiThemeProvider>
           <form onSubmit={this.props.registerUser}>
           <h1>Register User</h1>
           <div>
-            {/* <TextField 
+            <TextField 
+            floatingLabelText="username"
             hintText="username"
             value={this.props.username}
             onChange={this.props.handleChangeFor('username')}
-            /> */}
-            <br />
+            />
           </div>
           <div>
-            <label htmlFor="password">
-              Password:
-              <input
-                type="password"
-                name="password"
-                value={this.props.password}
-                onChange={this.props.handleChangeFor('password')}
-              />
-            </label>
-            <label htmlFor="firstName">
-              First Name:
-              <input
-                type="text"
-                name="firstName"
-                value={this.props.firstName}
-                onChange={this.props.handleChangeFor('firstName')}
-              />
-            </label>
-            <label htmlFor="lastName">
-              Last Name:
-              <input
-                type="text"
-                name="lastName"
-                value={this.props.lastName}
-                onChange={this.props.handleChangeFor('lastName')}
-              />
-            </label>
-            <label htmlFor="cohort">
-              Cohort:
-              <input
-                type="text"
-                name="cohort"
-                value={this.props.cohort}
-                onChange={this.props.handleChangeFor('cohort')}
-              />
-            </label>
+            <TextField 
+            floatingLabelText="password"
+            hintText="password"
+            type="password"
+            value={this.props.password}
+            onChange={this.props.handleChangeFor('password')}
+            />
+          </div>
+          <div>
+            <TextField 
+            floatingLabelText="first name"
+            hintText="first name"
+            value={this.props.firstName}
+            onChange={this.props.handleChangeFor('firstName')}
+            />
+          </div>
+          <div>
+            <TextField 
+            floatingLabelText="last name"
+            hintText="last name"
+            value={this.props.lastName}
+            onChange={this.props.handleChangeFor('lastName')}
+            />
+          </div>
+          <div>
+            <TextField 
+            floatingLabelText="cohort"
+            hintText="cohort"
+            value={this.props.cohort}
+            onChange={this.props.handleChangeFor('cohort')}
+            />
+          </div>
             <select value={this.props.program} onChange={this.props.handleChangeFor('program')}>
               <option value="Full Stack">Full Stack</option>
               <option value="UX">User Experience</option>
               </select>
-          </div>
           <div>
             <input
               type="submit"
@@ -70,7 +65,7 @@ class RegisterForm extends Component {
             <Link to="/login">Cancel</Link>
           </div>
         </form>
-        // </MuiThemeProvider>
+         </MuiThemeProvider>
         )
     }
 }
