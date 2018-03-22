@@ -35,37 +35,56 @@ class EditPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      project: 
-      {
-        appHosted: '',
-        appHosted2: '',
-        github: '',
+      project: {
         title: '',
         description: '',
       },
+    //   {
+    //     appHosted: '',
+    //     appHosted2: '',
+    //     github: '',
+    //     title: '',
+    //     description: '',
+    //   },
       message: '',
     };
     this.logout = this.logout.bind(this);
     this.handleChangeFor=this.handleChangeFor.bind(this);
     this.handleSubmit=this.handleSubmit.bind(this);
     this.editProject = this.editProject.bind(this);
+    this.getUserProject = this.getUserProject.bind(this);
   }
 
   editProject(newProject) {
     let projectId;
     if (this.props.list) {
          this.props.list.map((project) => {
-        if (project.person[0].username == this.props.user.userName) {
+        if (project.person[0].username === this.props.user.userName) {
             projectId = project._id;
         }
     })
-        console.log(projectId);
     axios.put(`${CONSTANTS.apiBaseUrl}/projects/${projectId}`, newProject)
     .then(response => response)
     .catch(error => {
         console.log('error on put', error);
     }) 
 }
+  }
+
+  getUserProject (username) {
+      axios.get(`${CONSTANTS.apiBaseUrl}/projects/${username}`)
+      .then(response => {
+          console.log(response.data.project[0]);
+          this.setState({
+              project: {
+                  title: response.data.project[0].title,
+                  description: response.data.project[0].description,
+                  appHosted: response.data.project[0].appHosted,
+                  appHosted2: response.data.project[0].appHosted2,
+                  github: response.data.project[0].github,
+              },
+          })
+        }).catch(error => {console.log(error);});
   }
 
   handleChangeFor = propertyName => event => {
@@ -90,6 +109,8 @@ class EditPage extends Component {
   componentDidMount() {
     this.props.dispatch(fetchUser());
     this.props.dispatch(fetchProjects());
+    this.getUserProject(this.props.user.userName);
+
   }
 
   componentDidUpdate() {
@@ -108,16 +129,7 @@ class EditPage extends Component {
 
   render() {
     let content = null;
-    let projectId;
-
-   
-
-    if (this.props.list) {
-         this.props.list.map((project) => {
-        if (project.person[0].username == this.props.user.userName) {
-            projectId = project._id;
-        }
-    });
+    if(this.props.list) {
       content = (
         <div>
           <h1
@@ -125,8 +137,8 @@ class EditPage extends Component {
           >
             Welcome, { this.props.user.userName }!
           </h1>
+          <p>{JSON.stringify(this.state.project)}</p>
           <h2>Here's where you can make changes to your project inputs</h2>
-          <p>{JSON.stringify(projectId)}</p>
           <ProjectForm handleChangeFor={this.handleChangeFor} project={this.state.project} handleSubmit={this.handleSubmit} projectId={this.projectId} />
           <button
             onClick={this.logout}
