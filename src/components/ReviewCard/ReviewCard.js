@@ -23,7 +23,6 @@ class ReviewCard extends Component {
                  <FlatButton label="Heroku" />
              </CardActions>
              </Card>
-        ))}
         </MuiThemeProvider>
         );
     }

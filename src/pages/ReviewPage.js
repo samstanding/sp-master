@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {fetchUser } from '../redux/actions/userActions';
-// import {fetchUserProject} from '../redux/actions/projectActions';
+import {fetchProjects} from '../redux/actions/projectActions';
 import { Link } from 'react-router-dom';
-// import ReviewCard from '../components/ReviewCard/ReviewCard';
+import ReviewCard from '../components/ReviewCard/ReviewCard';
 
 const propTypes = {
     dispatch: PropTypes.func,
@@ -23,7 +23,7 @@ const propTypes = {
   };
   
   const mapStateToProps = state => ({
-    // list: state.projects.projects,
+    list: state.projects.projects,
     user: state.user,
   });
 
@@ -38,26 +38,19 @@ class ReviewPage extends Component {
     componentDidMount() {
         this.props.dispatch(fetchUser());
         // this.props.dispatch(fetchUserProject());
+        this.props.dispatch(fetchProjects());
       }
 
    
 
     render() {
-        // let content;
-        // this.props.list.map((project) => {
-        //     if (project.person.username == this.props.user.userName) {
-        //         content = (<ProjectCards list={project}/>);
-        //     }
-        // })
         let content;
         if(this.props.list) {
-                    
-                    content = (
-                        <div>
-                        <p>{JSON.stringify(this.props.user)}</p>
-                       {/* <ReviewCard project={project}/> */}
-                        </div>
-                      )
+        this.props.list.map((project) => {
+            if (project.person[0].username === this.props.user.userName) {
+                content = (<ReviewCard project={project}/>);
+            }
+        })    
                 
     }
         
