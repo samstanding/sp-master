@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+// import TextField from 'material-ui/TextField';
+// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 
 class RegisterForm extends Component {
 
     render() {
         return (
-            <form onSubmit={this.props.registerUser}>
+          // <MuiThemeProvider>
+          <form onSubmit={this.props.registerUser}>
           <h1>Register User</h1>
           <div>
-            <label htmlFor="username">
-              Username:
-              <input
-                type="text"
-                name="username"
-                value={this.props.username}
-                onChange={this.props.handleChangeFor('username')}
-              />
-            </label>
+            {/* <TextField 
+            hintText="username"
+            value={this.props.username}
+            onChange={this.props.handleChangeFor('username')}
+            /> */}
+            <br />
           </div>
           <div>
             <label htmlFor="password">
@@ -69,6 +70,7 @@ class RegisterForm extends Component {
             <Link to="/login">Cancel</Link>
           </div>
         </form>
+        // </MuiThemeProvider>
         )
     }
 }
