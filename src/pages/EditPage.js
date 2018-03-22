@@ -39,13 +39,6 @@ class EditPage extends Component {
         title: '',
         description: '',
       },
-    //   {
-    //     appHosted: '',
-    //     appHosted2: '',
-    //     github: '',
-    //     title: '',
-    //     description: '',
-    //   },
       message: '',
     };
     this.logout = this.logout.bind(this);
@@ -139,7 +132,7 @@ class EditPage extends Component {
           </h1>
           <p>{JSON.stringify(this.state.project)}</p>
           <h2>Here's where you can make changes to your project inputs</h2>
-          <ProjectForm handleChangeFor={this.handleChangeFor} project={this.state.project} handleSubmit={this.handleSubmit} projectId={this.projectId} />
+          <ProjectForm handleChangeFor={this.handleChangeFor} project={this.state.project} handleSubmit={this.handleSubmit} />
           <button
             onClick={this.logout}
           >

@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import RaisedButton from 'material-ui/RaisedButton';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {fetchUser } from '../redux/actions/userActions';
 import {fetchProjects} from '../redux/actions/projectActions';
-import { Link } from 'react-router-dom';
+
 import ReviewCard from '../components/ReviewCard/ReviewCard';
 
 const propTypes = {
@@ -55,12 +58,18 @@ class ReviewPage extends Component {
     }
         
         return (
+            <MuiThemeProvider>
             <div>
-            <h1>This is where a {this.props.user.userName} will review their project</h1>
+            <h1>Great! Here's a preview of your solo project. Everything look alright?</h1>
             {content}
-            <Link to="/home"> Project Good</Link>
-            <Link to ="/edit">Project Bad I'd like to go back</Link>
+            <Link to="/home">
+            <RaisedButton label="Look's great! Submit!" />
+            </Link>
+            <Link to ="/edit">
+            <RaisedButton label="Nope! I need to make a change" />
+            </Link>
             </div>
+            </MuiThemeProvider>
         );
     
 }
