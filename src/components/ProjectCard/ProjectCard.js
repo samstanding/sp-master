@@ -4,6 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FontIcon from 'material-ui/FontIcon';
 import SvgIcon from 'material-ui/SvgIcon';
+import './ProjectCard.css';
 
 
 const styles = {
@@ -24,9 +25,11 @@ class ProjectCards extends Component {
     render() {
         return ( 
             <MuiThemeProvider>
-                <div>
+                 <div className = "ProjectCard">
             {this.props.list.map( (project, index) => (
+                <div className="OneCard">
              <Card key={index}>
+             
              <CardHeader 
              title ={project.title}
              subtitle={`${project.person[0].firstName} ${project.person[0].lastName}`}
@@ -45,7 +48,9 @@ class ProjectCards extends Component {
                  />
                  <RaisedButton label="Heroku" />
              </CardActions>
+             
              </Card>
+             </div>
         ))}
         </div>
         </MuiThemeProvider>

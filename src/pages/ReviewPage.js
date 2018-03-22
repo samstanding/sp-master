@@ -65,6 +65,7 @@ class ReviewPage extends Component {
             <Link to="/home">
             <RaisedButton label="Look's great! Submit!" />
             </Link>
+            {'    '}
             <Link to ="/edit">
             <RaisedButton label="Nope! I need to make a change" />
             </Link>
