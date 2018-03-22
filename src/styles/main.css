@@ -1,6 +1,5 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #e2e1e0;
 }
 
 .instructions h1 {
@@ -9,7 +8,7 @@ body {
 }
 
 .instructions {
-    background-color: #00acb0;
+    background-color: #00abb0;
     padding: 5px;
     color: #ece7e7;
 }

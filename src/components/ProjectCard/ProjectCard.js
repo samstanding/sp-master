@@ -27,15 +27,25 @@ class ProjectCards extends Component {
             <MuiThemeProvider>
                  <div className = "ProjectCard">
             {this.props.list.map( (project, index) => (
+                <div className="CardPadding">
                 <div className="OneCard">
              <Card key={index}>
              
-             <CardHeader 
+             {/* <CardHeader 
              title ={project.title}
-             subtitle={`${project.person[0].firstName} ${project.person[0].lastName}`}
-             />
+             subtitle={` ${project.person[0].firstName}  ${project.person[0].lastName} 
+             ${project.person[0].cohort} `}
+             /> */}
               <CardText>
+                  <h1> {project.title} </h1>
+                  <h2> {`${project.person[0].firstName}  ${project.person[0].lastName}`} </h2>
+                  <h4> {`${project.person[0].cohort} ${project.person[0].program}`} </h4>
+                  <div className="Description">
                 {project.description}
+                </div>
+                <div className="Image">
+                <img src='https://f4.bcbits.com/img/a2020752183_16.jpg' width="200" height="200"/>
+                </div>
              </CardText>
              
              <CardActions>
@@ -50,6 +60,7 @@ class ProjectCards extends Component {
              </CardActions>
              
              </Card>
+             </div>
              </div>
         ))}
         </div>
