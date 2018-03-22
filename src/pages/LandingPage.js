@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import CONSTANTS from '../constants/';
-// import axios from 'axios';
+import Search from '../components/SearchBar/SearchBar';
 import ProjectCards from '../components/ProjectCard/ProjectCard';
 import {fetchProjects} from '../redux/actions/projectActions';
 
@@ -44,6 +43,7 @@ class LandingPage extends Component {
 
     return (
       <div>
+        <Search />
         {content}
         </div>
     );
