@@ -45,14 +45,17 @@ class ReviewCard extends Component {
              </CardActions>
              </Card>
              </div>
-             <div className="LinkButtons">
+             <div className="Buttons">
+             <div className="SubmitButton">
              <Link to="/home">
-            <RaisedButton label="Look's great! Submit!" />
+            <RaisedButton label="Look's great. Submit!" primary={true} />
             </Link>
-            {'    '}
+           </div>
+           <div className="BackButton">
             <Link to ="/edit">
-            <RaisedButton label="Nope! I need to make a change" />
+            <RaisedButton label="Nope! I need to make a change" secondary={true} />
             </Link>
+            </div>
             </div>
             </div>
         );

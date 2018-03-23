@@ -22,7 +22,21 @@
     transform: translateY(-145px);  
   }
 
-  .LinkButtons {
-    margin: 40px;
+  .Buttons {
     padding:100px;
+    display: flex;
+    flex-direction: row;
+}
+
+  .SubmitButton {
+    align-content: left;
+    margin: 40px;
+    display: inline-block;
   }
+
+  .BackButton {
+    margin: 40px;
+    display: inline-block;
+  }
+
+ 
