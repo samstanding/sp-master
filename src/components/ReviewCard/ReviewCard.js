@@ -19,7 +19,7 @@ class ReviewCard extends Component {
     render() {
         return ( 
             <div>
-                <div className="OneCard">
+                <div className="ThisCard">
              <Card> 
             <CardText>
             <h1> {this.props.project.title} </h1>

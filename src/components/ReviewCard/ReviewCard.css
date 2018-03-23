@@ -1,4 +1,4 @@
-.OneCard {
+.ThisCard {
     height: 150px;
     margin-left:auto;
     margin-right: auto;
@@ -6,6 +6,14 @@
     align-content: center;
     box-shadow: 0 8px 3px rgba(0,0,0,0.12), 0 5px 2px rgba(0,0,0,0.24);
 }
+
+/* .OneCard {
+    height: 150px;
+    width:70%;
+    align-content: center;
+    margin-left: auto;
+    margin-right:auto;
+} */
 
 .CardPadding {
     padding:50px;
@@ -16,22 +24,21 @@
     width: 70%;
 }
 
-.Image {
+/* .Image {
     float:right;
     transform: translateX(-125px);
     transform: translateY(-145px);  
-  }
+  } */
 
   .Buttons {
     padding:100px;
-    display: flex;
-    flex-direction: row;
+    
 }
 
   .SubmitButton {
-    align-content: left;
     margin: 40px;
     display: inline-block;
+    display: right;
   }
 
   .BackButton {

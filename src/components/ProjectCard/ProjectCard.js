@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FontIcon from 'material-ui/FontIcon';
 import SvgIcon from 'material-ui/SvgIcon';
 import './ProjectCard.css';
@@ -24,7 +23,6 @@ class ProjectCards extends Component {
   
     render() {
         return ( 
-            <MuiThemeProvider>
                  <div className = "ProjectCard">
             {this.props.list.map( (project, index) => (
                 <div className="CardPadding">
@@ -64,7 +62,6 @@ class ProjectCards extends Component {
              </div>
         ))}
         </div>
-        </MuiThemeProvider>
         );
     }
     }
