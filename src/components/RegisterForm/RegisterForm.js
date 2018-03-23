@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import TextField from 'material-ui/TextField';
-// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -63,7 +62,6 @@ class RegisterForm extends Component {
           <div>
             <RaisedButton 
               type="submit"
-              name="submit"
               label="Register"
               primary={true}
             />
