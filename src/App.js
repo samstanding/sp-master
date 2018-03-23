@@ -9,6 +9,7 @@ import UserPage from './pages/UserPage';
 import LandingPage from './pages/LandingPage';
 import ReviewPage from './pages/ReviewPage';
 import EditPage from './pages/EditPage';
+import MyAppBar from './components/MyAppBar/MyAppBar';
 
 import './styles/main.css';
 
@@ -16,9 +17,11 @@ const App = () => (
   <MuiThemeProvider>
   <Router>
   <div>
-    <Header title="Prime Solo Projects" />
-    <Nav/>
-      
+    {/* <Header title="Prime Solo Projects" /> */}
+    {/* <Nav/> */}
+    <div>
+    <MyAppBar />
+      </div>
       <Switch>
         <Redirect exact from="/" to="/home" />
         <Route
