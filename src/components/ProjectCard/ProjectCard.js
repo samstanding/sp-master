@@ -50,7 +50,7 @@ class ProjectCards extends Component {
              
              <CardActions>
                  <RaisedButton 
-                 href={project.github}
+                 href={`https://${project.github}`}
                  target="_blank"
                  label="Github Link"
                  style={styles.button}

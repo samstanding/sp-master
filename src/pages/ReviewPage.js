@@ -58,19 +58,10 @@ class ReviewPage extends Component {
     }
         
         return (
-            <MuiThemeProvider>
             <div>
             <h1>Great! Here's a preview of your solo project. Everything look alright?</h1>
             {content}
-            <Link to="/home">
-            <RaisedButton label="Look's great! Submit!" />
-            </Link>
-            {'    '}
-            <Link to ="/edit">
-            <RaisedButton label="Nope! I need to make a change" />
-            </Link>
             </div>
-            </MuiThemeProvider>
         );
     
 }

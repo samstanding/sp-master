@@ -1,0 +1,28 @@
+.OneCard {
+    height: 150px;
+    margin-left:auto;
+    margin-right: auto;
+    width: 70%;
+    align-content: center;
+    box-shadow: 0 8px 3px rgba(0,0,0,0.12), 0 5px 2px rgba(0,0,0,0.24);
+}
+
+.CardPadding {
+    padding:50px;
+}
+
+.Description {
+    align-content: left;
+    width: 70%;
+}
+
+.Image {
+    float:right;
+    transform: translateX(-125px);
+    transform: translateY(-145px);  
+  }
+
+  .LinkButtons {
+    margin: 40px;
+    padding:100px;
+  }
