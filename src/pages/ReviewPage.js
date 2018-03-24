@@ -1,29 +1,29 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {fetchUser } from '../redux/actions/userActions';
-import {fetchProjects} from '../redux/actions/projectActions';
+// import {fetchUser } from '../redux/actions/userActions';
+import {fetchUserProject} from '../redux/actions/projectActions';
 import ReviewCard from '../components/ReviewCard/ReviewCard';
 
 const propTypes = {
     dispatch: PropTypes.func,
-    user: PropTypes.shape({ userName: PropTypes.string, isLoading: PropTypes.bool }),
-    list: PropTypes.array,
-    project: PropTypes.object,
+    // user: PropTypes.shape({ userName: PropTypes.string, isLoading: PropTypes.bool }),
+    list: PropTypes.object,
+    // project: PropTypes.object,
     history: PropTypes.shape({ push: PropTypes.func }),
   };
   
   const defaultProps = {
     dispatch: () => {},
-    user: { userName: null, isLoading: true },
-    list: {projects: []},
-    project: {},
+    // user: { userName: null, isLoading: true },
+    list: {userProject: {} },
+    // project: {},
     history: { push: () => {} },
   };
   
   const mapStateToProps = state => ({
-    list: state.projects.projects,
-    user: state.user,
+    list: state.userProject.userProject,
+    // user: state.user,
   });
 
 
@@ -35,9 +35,7 @@ class ReviewPage extends Component {
     }
   
     componentDidMount() {
-        this.props.dispatch(fetchUser());
-        // this.props.dispatch(fetchUserProject());
-        this.props.dispatch(fetchProjects());
+        this.props.dispatch(fetchUserProject());
       }
 
    
@@ -45,12 +43,9 @@ class ReviewPage extends Component {
     render() {
         let content;
         if(this.props.list) {
-        this.props.list.map((project) => {
-            if (project.person[0].username === this.props.user.userName) {
-                content = (<ReviewCard project={project}/>);
-            }
-        })    
-                
+        content = <ReviewCard list={this.props.list}/>;
+        
+            
     }
         
         return (

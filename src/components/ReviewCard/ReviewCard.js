@@ -20,13 +20,14 @@ class ReviewCard extends Component {
         return ( 
             <div>
                 <div className="ThisCard">
-             <Card> 
+                {this.props.list.map( (project, index) => (
+             <Card key={index}> 
             <CardText>
-            <h1> {this.props.project.title} </h1>
-            <h2> {`${this.props.project.person[0].firstName}  ${this.props.project.person[0].lastName}`} </h2>
-            <h4> {`${this.props.project.person[0].cohort} ${this.props.project.person[0].program}`} </h4>
+            <h1> {project.project[0].title} </h1>
+            <h2> {`${project.firstName}  ${project.lastName}`} </h2>
+            <h4> {`${project.cohort} ${project.program}`} </h4>
             <div className="Description">
-            {this.props.project.description}
+            {project.project[0].description}
             </div>
             <div className="Image">
             <img src='https://f4.bcbits.com/img/a2020752183_16.jpg' width="200" height="200"/>
@@ -35,7 +36,7 @@ class ReviewCard extends Component {
              
              <CardActions>
              <RaisedButton 
-                 href={`https://${this.props.project.github}`}
+                 href={`https://${project.project[0].github}`}
                  target="_blank"
                  label="Github Link"
                 //  style={styles.button}
@@ -44,7 +45,9 @@ class ReviewCard extends Component {
                  <RaisedButton label="Heroku" />
              </CardActions>
              </Card>
+                ))}
              </div>
+             
              <div className="Buttons">
              <div className="SubmitButton">
              <Link to="/home">

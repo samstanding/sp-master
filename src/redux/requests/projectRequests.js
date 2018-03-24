@@ -30,13 +30,13 @@ export function callProject(payload) {
       }).catch((error) => { throw error;}); 
   }
 
-  export function getUserProject(user) {
+  export function getUserProject() {
       const config = {
         headers: { 'Content-Type': 'application/json' },
         withCredentials: true,
       };
 
-      return axios.get(`${CONSTANTS.apiBaseUrl}/projects/${user.userName}`, config)
+      return axios.get(`${CONSTANTS.apiBaseUrl}/projects/userproject`, config)
       .then(response => response.data)
       .catch((error) => { throw error;});
   }

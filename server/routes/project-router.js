@@ -7,7 +7,7 @@ const User = require('../models/Person').User;
 const router = express.Router();
 
 router.post('/', (req, res) => {
-    console.log(req.user);
+    console.log('user info on post:', req.user);
     let username = req.user.username;
     let newProject = new Project(req.body.project);
     newProject.save((error, savedProject) => {
@@ -50,7 +50,7 @@ router.post('/', (req, res) => {
 })
 
 router.get('/', (req, res) => {
-    console.log('user info: ', req.user);
+    console.log('user info on all projects get: ', req.user);
     
     Project.find({}).populate('person').exec((error, foundProjects) => {
         if (error) {
@@ -62,23 +62,22 @@ router.get('/', (req, res) => {
     })
 });
 
-router.get('/:username', (req, res) => {
-    console.log('is this even called? user info: ', req.user);
-    let username = req.params.username;
-    User.findOne({
-        "username": username
-    }).populate('project').exec((error, foundUser) => {
+router.get('/userproject', (req, res) => {
+    console.log('user info on review ', req.user);
+    let username = req.user.username;
+    User.find({"username": username}).populate('project').exec((error, foundUser) => {
         if (error) {
             console.log('error on get user project', error);
             res.sendStatus(500);
         } else {
+            console.log(foundUser);
             res.send(foundUser);
         }
     })
 })
 
 router.put('/:id', (req, res) => {
-    console.log('user info: ', req.user);
+    console.log('user info on edit: ', req.user);
     
     let id = req.params.id;
     let editedProject = req.body;
