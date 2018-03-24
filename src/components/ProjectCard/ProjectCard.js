@@ -41,7 +41,7 @@ class ProjectCards extends Component {
                 {project.description}
                 </div>
                 <div className="Image">
-                <img src='https://f4.bcbits.com/img/a2020752183_16.jpg' width="200" height="200"/>
+                <img src='https://f4.bcbits.com/img/a2020752183_16.jpg' width="200" height="200" alt="ge"/>
                 </div>
              </CardText>
              

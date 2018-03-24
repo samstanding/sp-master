@@ -5,6 +5,7 @@ import {getUserProject} from '../requests/projectRequests';
 function* fetchUserProject (action) {
     try {
         yield put ({type: PROJECT_ACTIONS.GET_USER_PROJECT_START});
+        yield put ({type: PROJECT_ACTIONS.POST_REQUEST_DONE});
         const userProject = yield call(getUserProject);
         yield put ({
             type: PROJECT_ACTIONS.GET_USER_PROJECT_SET,

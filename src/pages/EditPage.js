@@ -7,7 +7,7 @@ import ProjectForm from '../components/ProjectForm/ProjectForm';
 import {fetchUser} from '../redux/actions/userActions';
 import { triggerLogout } from '../redux/actions/loginActions';
 // import {triggerPut} from  '../redux/actions/projectActions';
-import {fetchProjects} from '../redux/actions/projectActions';
+import {fetchUserProject} from '../redux/actions/projectActions';
 
 
 
@@ -27,7 +27,7 @@ const defaultProps = {
 
 const mapStateToProps = state => ({
   user: state.user,
-  list: state.projects.projects,
+  list: state.userProject.userProject,
 });
 
 
@@ -38,6 +38,8 @@ class EditPage extends Component {
       project: {
         title: '',
         description: '',
+        appHosted:'',
+        github:'',
       },
       message: '',
     };
@@ -45,40 +47,39 @@ class EditPage extends Component {
     this.handleChangeFor=this.handleChangeFor.bind(this);
     this.handleSubmit=this.handleSubmit.bind(this);
     this.editProject = this.editProject.bind(this);
-    this.getUserProject = this.getUserProject.bind(this);
+    // this.getUserProject=this.getUserProject.bind(this);
+
   }
 
   editProject(newProject) {
     let projectId;
     if (this.props.list) {
-         this.props.list.map((project) => {
-        if (project.person[0].username === this.props.user.userName) {
-            projectId = project._id;
-        }
-    })
+      projectId = this.props.list.project[0]._id;
+    }
     axios.put(`${CONSTANTS.apiBaseUrl}/projects/${projectId}`, newProject)
     .then(response => response)
     .catch(error => {
         console.log('error on put', error);
     }) 
 }
-  }
 
-  getUserProject (username) {
-      axios.get(`${CONSTANTS.apiBaseUrl}/projects/${username}`)
-      .then(response => {
-          console.log(response.data.project[0]);
-          this.setState({
-              project: {
-                  title: response.data.project[0].title,
-                  description: response.data.project[0].description,
-                  appHosted: response.data.project[0].appHosted,
-                  appHosted2: response.data.project[0].appHosted2,
-                  github: response.data.project[0].github,
-              },
-          })
-        }).catch(error => {console.log(error);});
-  }
+  
+
+  // getUserProject () {
+  //     axios.get(`${CONSTANTS.apiBaseUrl}/projects/userproject`)
+  //     .then(response => {
+  //         console.log(response.data.project[0]);
+  //         this.setState({
+  //             project: {
+  //                 title: response.data.project[0].title,
+  //                 description: response.data.project[0].description,
+  //                 appHosted: response.data.project[0].appHosted,
+  //                 appHosted2: response.data.project[0].appHosted2,
+  //                 github: response.data.project[0].github,
+  //             },
+  //         })
+  //       }).catch(error => {console.log(error);});
+  // }
 
   handleChangeFor = propertyName => event => {
     this.setState({
@@ -101,8 +102,8 @@ class EditPage extends Component {
 
   componentDidMount() {
     this.props.dispatch(fetchUser());
-    this.props.dispatch(fetchProjects());
-    this.getUserProject(this.props.user.userName);
+    this.props.dispatch(fetchUserProject());
+    
 
   }
 
@@ -130,9 +131,9 @@ class EditPage extends Component {
           >
             Welcome, { this.props.user.userName }!
           </h1>
-          <p>{JSON.stringify(this.state.project)}</p>
+          <p>{JSON.stringify(this.props.list)}</p>
           <h2>Here's where you can make changes to your project inputs</h2>
-          <ProjectForm handleChangeFor={this.handleChangeFor} project={this.state.project} handleSubmit={this.handleSubmit} />
+          <ProjectForm handleChangeFor={this.handleChangeFor} project={this.props.list} handleSubmit={this.handleSubmit} />
           <button
             onClick={this.logout}
           >
@@ -149,6 +150,7 @@ class EditPage extends Component {
     );
   }
 }
+
 
 EditPage.propTypes = propTypes;
 EditPage.defaultProps = defaultProps;

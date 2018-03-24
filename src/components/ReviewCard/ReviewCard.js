@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Card, CardActions, CardText} from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import SvgIcon from 'material-ui/SvgIcon';
-import { Link } from 'react-router-dom';
 import './ReviewCard.css';
 
 
@@ -30,7 +29,7 @@ class ReviewCard extends Component {
             {project.project[0].description}
             </div>
             <div className="Image">
-            <img src='https://f4.bcbits.com/img/a2020752183_16.jpg' width="200" height="200"/>
+            <img src='https://f4.bcbits.com/img/a2020752183_16.jpg' width="200" height="200" alt="ge"/>
             </div>
              </CardText>
              
@@ -48,18 +47,6 @@ class ReviewCard extends Component {
                 ))}
              </div>
              
-             <div className="Buttons">
-             <div className="SubmitButton">
-             <Link to="/home">
-            <RaisedButton label="Look's great. Submit!" primary={true} />
-            </Link>
-           </div>
-           <div className="BackButton">
-            <Link to ="/edit">
-            <RaisedButton label="Nope! I need to make a change" secondary={true} />
-            </Link>
-            </div>
-            </div>
             </div>
         );
     }

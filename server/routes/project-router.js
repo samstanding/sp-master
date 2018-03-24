@@ -70,7 +70,7 @@ router.get('/userproject', (req, res) => {
             console.log('error on get user project', error);
             res.sendStatus(500);
         } else {
-            console.log(foundUser);
+            console.log('found user project: ', foundUser);
             res.send(foundUser);
         }
     })

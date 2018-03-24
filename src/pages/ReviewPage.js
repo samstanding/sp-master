@@ -4,19 +4,20 @@ import { connect } from 'react-redux';
 // import {fetchUser } from '../redux/actions/userActions';
 import {fetchUserProject} from '../redux/actions/projectActions';
 import ReviewCard from '../components/ReviewCard/ReviewCard';
+import ReviewButtons from '../components/ReviewButtons/ReviewButtons';
 
 const propTypes = {
     dispatch: PropTypes.func,
     // user: PropTypes.shape({ userName: PropTypes.string, isLoading: PropTypes.bool }),
-    list: PropTypes.object,
+    list: PropTypes.array,
     // project: PropTypes.object,
     history: PropTypes.shape({ push: PropTypes.func }),
   };
   
   const defaultProps = {
     dispatch: () => {},
-    // user: { userName: null, isLoading: true },
-    list: {userProject: {} },
+    user: { userName: null, isLoading: true },
+    list: {userProject: [] },
     // project: {},
     history: { push: () => {} },
   };
@@ -29,12 +30,10 @@ const propTypes = {
 
 
 class ReviewPage extends Component {
-    constructor(props) {
-        super(props);
-
-    }
+ 
   
     componentDidMount() {
+        // this.props.dispatch(fetchUser());
         this.props.dispatch(fetchUserProject());
       }
 
@@ -43,8 +42,12 @@ class ReviewPage extends Component {
     render() {
         let content;
         if(this.props.list) {
-        content = <ReviewCard list={this.props.list}/>;
-        
+        content = (
+            <div>
+            <ReviewCard list={this.props.list}/>
+            <ReviewButtons />
+            </div>
+        ); 
             
     }
         

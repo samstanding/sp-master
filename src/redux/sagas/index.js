@@ -13,7 +13,7 @@ export default function* rootSaga() {
     loginSaga(),
     projectSaga(),
     getProjectsSaga(),
-    getUserProjectSaga(),
+    // getUserProjectSaga(),
     editProjectSaga(),
     // watchIncrementAsync()
   ]);
