@@ -54,7 +54,7 @@ class UserPage extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.dispatch(triggerPost(this.state.project, this.props.user.userName));
+    this.props.dispatch(triggerPost(this.state.project));
     this.props.history.push('/review');
 
   }

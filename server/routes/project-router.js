@@ -6,10 +6,9 @@ const User = require('../models/Person').User;
 
 const router = express.Router();
 
-router.post('/:username', (req, res) => {
-    let username = req.params.username;
-    console.log(req.body);
-    console.log(username);
+router.post('/', (req, res) => {
+    console.log(req.user);
+    let username = req.user.username;
     let newProject = new Project(req.body.project);
     newProject.save((error, savedProject) => {
         if (error) {
@@ -51,6 +50,8 @@ router.post('/:username', (req, res) => {
 })
 
 router.get('/', (req, res) => {
+    console.log('user info: ', req.user);
+    
     Project.find({}).populate('person').exec((error, foundProjects) => {
         if (error) {
             console.log('error on get: ', error);
@@ -62,6 +63,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:username', (req, res) => {
+    console.log('is this even called? user info: ', req.user);
     let username = req.params.username;
     User.findOne({
         "username": username
@@ -70,15 +72,14 @@ router.get('/:username', (req, res) => {
             console.log('error on get user project', error);
             res.sendStatus(500);
         } else {
-            console.log(foundUser);
             res.send(foundUser);
         }
     })
 })
 
 router.put('/:id', (req, res) => {
-    console.log(req.params.id);
-    console.log(req.body);
+    console.log('user info: ', req.user);
+    
     let id = req.params.id;
     let editedProject = req.body;
     Project.findByIdAndUpdate({
@@ -91,7 +92,6 @@ router.put('/:id', (req, res) => {
                 console.log('error on editing projecting', error);
                 res.sendStatus(500);
             } else {
-                console.log(updatedProject);
                 res.sendStatus(200);
             }
         })

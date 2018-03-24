@@ -20,11 +20,10 @@ export const PROJECT_ACTIONS = {
 
 }
 
-export const triggerPost = (project, username) => ({
+export const triggerPost = (project) => ({
     type: PROJECT_ACTIONS.POST_PROJECT,
     payload: {
       project,
-      username,
     },
   });
 
