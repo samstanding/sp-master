@@ -4,10 +4,9 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import CONSTANTS from './../constants';
 import ProjectForm from '../components/ProjectForm/ProjectForm';
-import {fetchUser} from '../redux/actions/userActions';
+// import {fetchUser} from '../redux/actions/userActions';
 import { triggerLogout } from '../redux/actions/loginActions';
 // import {triggerPut} from  '../redux/actions/projectActions';
-import {fetchUserProject} from '../redux/actions/projectActions';
 
 
 
@@ -49,20 +48,24 @@ class EditPage extends Component {
     this.editProject = this.editProject.bind(this);
     // this.getUserProject=this.getUserProject.bind(this);
 
+
   }
 
   editProject(newProject) {
     let projectId;
     if (this.props.list) {
-      projectId = this.props.list.project[0]._id;
-    }
+      this.props.list.map((project) => {
+        if (project.person[0].username === this.props.user.userName) {
+          projectId = project._id;
+        }
+      })
     axios.put(`${CONSTANTS.apiBaseUrl}/projects/${projectId}`, newProject)
     .then(response => response)
     .catch(error => {
         console.log('error on put', error);
     }) 
 }
-
+  }
   
 
   // getUserProject () {
@@ -74,7 +77,6 @@ class EditPage extends Component {
   //                 title: response.data.project[0].title,
   //                 description: response.data.project[0].description,
   //                 appHosted: response.data.project[0].appHosted,
-  //                 appHosted2: response.data.project[0].appHosted2,
   //                 github: response.data.project[0].github,
   //             },
   //         })
@@ -94,6 +96,7 @@ class EditPage extends Component {
   handleSubmit(event) {
     event.preventDefault();
     // this.props.dispatch(triggerPut(this.state.project, this.getProjectId()));
+    
     this.editProject(this.state.project);
     this.props.history.push('/review');
 
@@ -101,11 +104,24 @@ class EditPage extends Component {
 
 
   componentDidMount() {
-    this.props.dispatch(fetchUser());
-    this.props.dispatch(fetchUserProject());
+    // this.getUserProject();
+    if(this.props.list) {
+      this.setState({
+        project: {
+          title: this.props.list[0].project[0].title,
+          description: this.props.list[0].project[0].description,
+          github: this.props.list[0].project[0].github,
+          appHosted:this.props.list[0].project[0].appHosted,
+        },
+      });
+    }
     
 
   }
+
+  // componentWillReceiveProps(defaultProps) {
+    
+  // }
 
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
@@ -131,9 +147,9 @@ class EditPage extends Component {
           >
             Welcome, { this.props.user.userName }!
           </h1>
-          <p>{JSON.stringify(this.props.list)}</p>
+          <p>{JSON.stringify(this.props.list[0].project[0].title)}</p>
           <h2>Here's where you can make changes to your project inputs</h2>
-          <ProjectForm handleChangeFor={this.handleChangeFor} project={this.props.list} handleSubmit={this.handleSubmit} />
+          <ProjectForm handleChangeFor={this.handleChangeFor} project={this.state.project} handleSubmit={this.handleSubmit} />
           <button
             onClick={this.logout}
           >
