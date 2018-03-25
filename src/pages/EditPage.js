@@ -52,13 +52,8 @@ class EditPage extends Component {
   }
 
   editProject(newProject) {
-    let projectId;
     if (this.props.list) {
-      this.props.list.map((project) => {
-        if (project.person[0].username === this.props.user.userName) {
-          projectId = project._id;
-        }
-      })
+     let projectId = this.props.list[0].project[0]._id;
     axios.put(`${CONSTANTS.apiBaseUrl}/projects/${projectId}`, newProject)
     .then(response => response)
     .catch(error => {
