@@ -4,9 +4,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import CONSTANTS from './../constants';
 import ProjectForm from '../components/ProjectForm/ProjectForm';
-// import {fetchUser} from '../redux/actions/userActions';
-import { triggerLogout } from '../redux/actions/loginActions';
-// import {triggerPut} from  '../redux/actions/projectActions';
+import {triggerPut} from  '../redux/actions/projectActions';
 
 
 
@@ -35,6 +33,7 @@ class EditPage extends Component {
     super(props);
     this.state = {
       project: {
+        _id: '',
         title: '',
         description: '',
         appHosted:'',
@@ -42,25 +41,25 @@ class EditPage extends Component {
       },
       message: '',
     };
-    this.logout = this.logout.bind(this);
+    // this.logout = this.logout.bind(this);
     this.handleChangeFor=this.handleChangeFor.bind(this);
     this.handleSubmit=this.handleSubmit.bind(this);
-    this.editProject = this.editProject.bind(this);
+    // this.editProject = this.editProject.bind(this);
     // this.getUserProject=this.getUserProject.bind(this);
 
 
   }
 
-  editProject(newProject) {
-    if (this.props.list) {
-     let projectId = this.props.list[0].project[0]._id;
-    axios.put(`${CONSTANTS.apiBaseUrl}/projects/${projectId}`, newProject)
-    .then(response => response)
-    .catch(error => {
-        console.log('error on put', error);
-    }) 
-}
-  }
+//   editProject(newProject) {
+//     if (this.props.list) {
+//      let projectId = this.props.list[0].project[0]._id;
+//     axios.put(`${CONSTANTS.apiBaseUrl}/projects/${projectId}`, newProject)
+//     .then(response => response)
+//     .catch(error => {
+//         console.log('error on put', error);
+//     }) 
+// }
+//   }
   
 
   // getUserProject () {
@@ -90,9 +89,8 @@ class EditPage extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    // this.props.dispatch(triggerPut(this.state.project, this.getProjectId()));
-    
-    this.editProject(this.state.project);
+    console.log(this.state.project);
+    this.props.dispatch(triggerPut(this.state.project));
     this.props.history.push('/review');
 
   }
@@ -103,6 +101,7 @@ class EditPage extends Component {
     if(this.props.list) {
       this.setState({
         project: {
+          _id: this.props.list[0].project[0]._id,
           title: this.props.list[0].project[0].title,
           description: this.props.list[0].project[0].description,
           github: this.props.list[0].project[0].github,
@@ -114,9 +113,6 @@ class EditPage extends Component {
 
   }
 
-  // componentWillReceiveProps(defaultProps) {
-    
-  // }
 
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
@@ -124,10 +120,7 @@ class EditPage extends Component {
     }
   }
 
-  logout() {
-    this.props.dispatch(triggerLogout());
-    // this.props.history.push('home');
-  }
+ 
 
  
   

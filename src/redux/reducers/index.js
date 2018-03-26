@@ -4,7 +4,7 @@ import login from './loginReducer';
 import sendProject from './projectReducer';
 import projects from './fetchProjectReducer';
 import userProject from './getUserProjectReducer';
-import editProject from './editProjectReducer';
+import putProject from './editProjectReducer';
 
 
 const store = combineReducers({
@@ -13,7 +13,7 @@ const store = combineReducers({
   projects,
   sendProject,
   userProject,
-  editProject,
+  putProject,
 });
 
 export default store;

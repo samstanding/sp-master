@@ -18,9 +18,9 @@ export const PROJECT_ACTIONS = {
     GET_USER_PROJECT_FAILED: "GET_USER_PROJECT_FAILED",
     EDIT_PROJECT: "EDIT_PROJECT",
     GATHER_EDITED_PROJECT: "GATHER_EDITED_PROJECT",
-    REQUEST_EDIT_START: "REQUEST_START",
-    REQUEST_EDIT_DONE: "REQUEST_DONE",
-
+    REQUEST_EDIT_START: "REQUEST_EDIT_START",
+    REQUEST_EDIT_DONE: "REQUEST_EDIT_DONE",
+    EDIT_PROJECT_FAILED: "EDIT_PROJECT_FAILED",
 }
 
 export const triggerPost = (project) => ({
@@ -38,10 +38,9 @@ export const triggerPost = (project) => ({
     type: PROJECT_ACTIONS.GET_USER_PROJECT,
   });
 
-  export const triggerPut = (project, projectId) => ({
+  export const triggerPut = (project) => ({    
     type:PROJECT_ACTIONS.EDIT_PROJECT,
     payload: {
       project,
-      projectId,
     },
   });

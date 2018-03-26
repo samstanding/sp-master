@@ -70,31 +70,42 @@ router.get('/userproject', (req, res) => {
             console.log('error on get user project', error);
             res.sendStatus(500);
         } else {
-            console.log('found user project: ', foundUser);
+            console.log('found user project: ', foundUser[0].project[0]);
             res.send(foundUser);
         }
     })
 })
 
-router.put('/:id', (req, res) => {
-    console.log('user info on edit: ', req.user);
-    
-    let id = req.params.id;
+router.put('/', (req, res) => {
+    console.log(' ------------- user info on edit: ', req.user, '------------ project to edit: ', req.body);
+    let id = req.body.project._id;
     let editedProject = req.body;
-    Project.findByIdAndUpdate({
-            "_id": id
-        }, {
-            $set: editedProject
-        },
-        (error, updatedProject) => {
+    Project.find({"_id": id}, 
+        (error, project) => {
             if (error) {
-                console.log('error on editing projecting', error);
+                console.log('error on editing project', error);
                 res.sendStatus(500);
             } else {
+                console.log('project: ', project[0]);
+                project = project[0];
+                project.appHosted = req.body.project.appHosted;
+                project.github = req.body.project.github;
+                project.title = req.body.project.title;
+                project.description = req.body.project.description;
+                project.save( (error, updatedProject) => {
+                    if(error) {
+                        console.log('error after update: ', error);
+                        res.sendStatus(500);
+                    } else {
+                        console.log('updated Project: ',updatedProject);
+                        
+                    }
+                } )//end project save
                 res.sendStatus(200);
-            }
+                // console.log('edited project: ', updatedProject);
+            } 
         })
-})
+});
 
 
 module.exports = router;

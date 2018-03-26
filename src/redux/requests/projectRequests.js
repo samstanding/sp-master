@@ -2,6 +2,7 @@ import axios from 'axios';
 import CONSTANTS from '../../constants';
 
 export function callProject(payload) {
+    console.log(payload.project);
     const body = ({
       project: payload.project,
     });
@@ -42,6 +43,7 @@ export function callProject(payload) {
   }
 
   export function editProject(payload) {
+    console.log(payload.project);
     const body = ({
       project: payload.project
     });
@@ -50,7 +52,7 @@ export function callProject(payload) {
       withCredentials: true,
     };
 
-    return axios.put(`${CONSTANTS.apiBaseUrl}/projects/${payload.projectId}`, body, config)
+    return axios.put(`${CONSTANTS.apiBaseUrl}/projects`, body, config)
     .then(response => response.data)
     .catch((error) => {
       throw error.response || error;

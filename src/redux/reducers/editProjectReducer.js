@@ -1,6 +1,7 @@
+import {combineReducers} from 'redux';
 import { PROJECT_ACTIONS } from '../actions/projectActions';
 
-const editProject = (state = '', action) => {
+const putProject = (state = '', action) => {
     switch(action.type) {
         case PROJECT_ACTIONS.EDIT_PROJECT:
         return action.payload;
@@ -9,4 +10,18 @@ const editProject = (state = '', action) => {
     }
 };
 
-export default editProject;
+const isLoading = (state = false, action) => {
+    switch(action.type) {
+        case PROJECT_ACTIONS.REQUEST_EDIT_START:
+        return true;
+        case PROJECT_ACTIONS.REQUEST_EDIT_DONE:
+        return false;
+        default:
+        return state;
+    }
+}
+
+export default combineReducers ({
+    putProject,
+    isLoading,
+});

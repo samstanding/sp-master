@@ -34,7 +34,7 @@ class ReviewPage extends Component {
   
     componentDidMount() {
         // this.props.dispatch(fetchUser());
-        this.props.dispatch(fetchUserProject());
+        // this.props.dispatch(fetchUserProject());
       }
 
    
