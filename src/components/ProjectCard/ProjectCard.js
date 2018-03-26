@@ -44,7 +44,7 @@ class ProjectCards extends Component {
                 {project.description}
                 </div>
                 <div className="Image">
-                <img src={project.projectURL.url}  width="200" height="200" alt="No screenshot found"/>
+                <img id="img_url" src={`${project.projectURL.url}`}   alt="No screenshot found" object-fit="cover" />
                 </div>
              </CardText>
              

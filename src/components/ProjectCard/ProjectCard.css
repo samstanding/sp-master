@@ -30,4 +30,11 @@
       float:right;
       transform: translateX(-125px);
       transform: translateY(-145px);  
+      
+    }
+
+    #img_url {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
     }

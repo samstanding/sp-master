@@ -29,7 +29,7 @@ class ReviewCard extends Component {
             {project.project[0].description}
             </div>
             <div className="Image">
-            <img src={project.project[0].projectURL.url} width="200" height="200" alt="project screenshot"/>
+            <img src={project.project[0].projectURL.url} id="review_img_url" alt="project screenshot"/>
             </div>
              </CardText>
              

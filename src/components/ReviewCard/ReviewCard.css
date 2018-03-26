@@ -46,4 +46,10 @@
     display: inline-block;
   }
 
+  #review_img_url {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+  }
+
  
