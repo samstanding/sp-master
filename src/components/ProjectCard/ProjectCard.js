@@ -47,13 +47,16 @@ class ProjectCards extends Component {
              
              <CardActions>
                  <RaisedButton 
-                 href={`https://${project.github}`}
+                 href={`${project.github}`}
                  target="_blank"
                  label="Github Link"
                  style={styles.button}
                  icon={<GitHubIcon />}
                  />
-                 <RaisedButton label="Heroku" />
+                 <RaisedButton 
+                  href={`${project.appHosted}`}
+                  target="_blank"
+                  label="Hosted App" /> />
              </CardActions>
              
              </Card>

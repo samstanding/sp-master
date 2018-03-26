@@ -15,6 +15,7 @@ const ProjectSchema = new Schema ({
   github: String,
   title: String,
   description: String,
+  projectURL: Object,
 })
 
 const UserSchema = new Schema ({

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // import {fetchUser } from '../redux/actions/userActions';
-import {fetchUserProject} from '../redux/actions/projectActions';
+// import {fetchUserProject} from '../redux/actions/projectActions';
 import ReviewCard from '../components/ReviewCard/ReviewCard';
 import ReviewButtons from '../components/ReviewButtons/ReviewButtons';
 

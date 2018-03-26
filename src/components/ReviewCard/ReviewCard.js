@@ -29,19 +29,22 @@ class ReviewCard extends Component {
             {project.project[0].description}
             </div>
             <div className="Image">
-            <img src='https://f4.bcbits.com/img/a2020752183_16.jpg' width="200" height="200" alt="ge"/>
+            <img src={project.project[0].projectURL.url} width="200" height="200" alt="project screenshot"/>
             </div>
              </CardText>
              
              <CardActions>
              <RaisedButton 
-                 href={`https://${project.project[0].github}`}
+                 href={`${project.project[0].github}`}
                  target="_blank"
                  label="Github Link"
                 //  style={styles.button}
                  icon={<GitHubIcon />}
                  />
-                 <RaisedButton label="Heroku" />
+                 <RaisedButton 
+                 href={`${project.project[0].appHosted}`}
+                 target="_blank"
+                 label="Hosted App" />
              </CardActions>
              </Card>
                 ))}

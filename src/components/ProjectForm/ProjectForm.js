@@ -1,6 +1,23 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import ReactFilestack from 'react-filestack';
+
+const styles = {
+    button: {
+      margin: 12,
+    },
+    exampleImageInput: {
+      cursor: 'pointer',
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      right: 0,
+      left: 0,
+      width: '100%',
+      opacity: 0,
+    },
+  };
 
 class ProjectFrom extends Component {
         render() {
@@ -41,6 +58,23 @@ class ProjectFrom extends Component {
                 onChange={this.props.handleChangeFor('appHosted')}
                 value={this.props.project.appHosted}
                 />
+                </div>
+                <div>
+                <RaisedButton
+                onChange={this.props.handleChangeFor('projectURL')}
+                value={this.props.project.projectURL} >
+                <ReactFilestack 
+                apikey={'Axw9wpmiCSCSKeOsBQCQ4z'} 
+                mode={'pick'}
+                onSuccess={(response) => {
+                    this.props.handleChangeFor('projectURL');
+                    this.props.project.projectURL=response.filesUploaded[0];
+                    console.log(response);
+                } }
+                onError={(e) => console.log(e)}
+                buttonText={'Pick File'}
+                 />
+                </RaisedButton>
                 </div>
                 <RaisedButton
                 type="submit" 

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import axios from 'axios';
-import CONSTANTS from './../constants';
+// import axios from 'axios';
+// import CONSTANTS from './../constants';
 import ProjectForm from '../components/ProjectForm/ProjectForm';
 import {triggerPut} from  '../redux/actions/projectActions';
 
@@ -135,7 +135,6 @@ class EditPage extends Component {
           >
             Welcome, { this.props.user.userName }!
           </h1>
-          <p>{JSON.stringify(this.props.list[0].project[0].title)}</p>
           <h2>Here's where you can make changes to your project inputs</h2>
           <ProjectForm handleChangeFor={this.handleChangeFor} project={this.state.project} handleSubmit={this.handleSubmit} />
           <button

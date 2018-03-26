@@ -34,6 +34,7 @@ class UserPage extends Component {
         github: '',
         title: '',
         description: '',
+        projectURL: {},
       },
       message: '',
     };
