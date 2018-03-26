@@ -4,6 +4,9 @@ import RaisedButton from 'material-ui/RaisedButton';
 import SvgIcon from 'material-ui/SvgIcon';
 import './ProjectCard.css';
 
+const standby = () => {
+    return 'src=../../public/favicon.ico';
+}
 
 const styles = {
     button: {
@@ -41,7 +44,7 @@ class ProjectCards extends Component {
                 {project.description}
                 </div>
                 <div className="Image">
-                <img src='https://f4.bcbits.com/img/a2020752183_16.jpg' width="200" height="200" alt="ge"/>
+                <img src={project.projectURL.url}  width="200" height="200" alt="No screenshot found"/>
                 </div>
              </CardText>
              
