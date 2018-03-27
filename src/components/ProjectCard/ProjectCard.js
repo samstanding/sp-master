@@ -24,27 +24,23 @@ const GitHubIcon = (props) => (
 class ProjectCards extends Component {
   
     render() {
+       
         return ( 
                  <div className = "ProjectCard">
             {this.props.list.map( (project, index) => (
                 <div className="CardPadding">
                 <div className="OneCard">
              <Card key={index}>
-             
-             {/* <CardHeader 
-             title ={project.title}
-             subtitle={` ${project.person[0].firstName}  ${project.person[0].lastName} 
-             ${project.person[0].cohort} `}
-             /> */}
               <CardText>
                   <h1> {project.title} </h1>
                   <h2> {`${project.person[0].firstName}  ${project.person[0].lastName}`} </h2>
                   <h4> {`${project.person[0].cohort} ${project.person[0].program}`} </h4>
                   <div className="Description">
                 {project.description}
+                <p>{JSON.stringify(index)}</p>
                 </div>
                 <div className="Image">
-                <img id="img_url" src={`${project.projectURL.url}`}   alt="No screenshot found" object-fit="cover" />
+                <img src={project.projectURL.url} id="review_img_url" alt="project screenshot"/>
                 </div>
              </CardText>
              

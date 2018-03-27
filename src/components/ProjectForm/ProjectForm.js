@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import ReactFilestack from 'react-filestack';
+import './ProjectForm.css';
 
 const styles = {
     button: {
       margin: 12,
     },
-    exampleImageInput: {
+    imageInput: {
       cursor: 'pointer',
       position: 'absolute',
       top: 0,
@@ -62,7 +63,11 @@ class ProjectFrom extends Component {
                 <div>
                 <RaisedButton
                 onChange={this.props.handleChangeFor('projectURL')}
-                value={this.props.project.projectURL} >
+                value={this.props.project.projectURL} 
+                labelPosition="before"
+                containerElement="label"
+                label="Upload a screenshot of your project"
+                style={styles.button}>
                 <ReactFilestack 
                 apikey={'Axw9wpmiCSCSKeOsBQCQ4z'} 
                 mode={'pick'}
@@ -72,7 +77,8 @@ class ProjectFrom extends Component {
                     console.log(response);
                 } }
                 onError={(e) => console.log(e)}
-                buttonText={'Pick File'}
+                buttonText={''}
+                buttonClass="fs-button"
                  />
                 </RaisedButton>
                 </div>

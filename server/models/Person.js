@@ -15,7 +15,7 @@ const ProjectSchema = new Schema ({
   github: String,
   title: String,
   description: String,
-  projectURL: Object,
+  projectURL: {type: Object, default: { url: 'https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/450/s300/prime-20logo-20color.png'}}
 })
 
 const UserSchema = new Schema ({

@@ -38,6 +38,7 @@ class EditPage extends Component {
         description: '',
         appHosted:'',
         github:'',
+        projectURL:{},
       },
       message: '',
     };
@@ -106,6 +107,7 @@ class EditPage extends Component {
           description: this.props.list[0].project[0].description,
           github: this.props.list[0].project[0].github,
           appHosted:this.props.list[0].project[0].appHosted,
+          projectURL: this.props.list[0].project[0].projectURL,
         },
       });
     }
