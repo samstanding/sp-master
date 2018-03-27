@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
+injectTapEventPlugin();
 
 
 class RegisterForm extends Component {
@@ -14,7 +17,7 @@ class RegisterForm extends Component {
           <form onSubmit={this.props.registerUser}>
           <div>
             <TextField 
-            hintText="username"
+            
             floatingLabelText="username"
             value={this.props.username}
             onChange={this.props.handleChangeFor('username')}
@@ -22,7 +25,7 @@ class RegisterForm extends Component {
           </div>
           <div>
             <TextField 
-            hintText="password"
+            
             floatingLabelText="password"
             type="password"
             value={this.props.password}
@@ -31,7 +34,7 @@ class RegisterForm extends Component {
           </div>
           <div>
             <TextField 
-            hintText="first name"
+            
             floatingLabelText="first name"
             value={this.props.firstName}
             onChange={this.props.handleChangeFor('firstName')}
@@ -39,7 +42,7 @@ class RegisterForm extends Component {
           </div>
           <div>
             <TextField 
-            hintText="last name"
+            
             floatingLabelText="last name"
             value={this.props.lastName}
             onChange={this.props.handleChangeFor('lastName')}
@@ -54,13 +57,15 @@ class RegisterForm extends Component {
             />
           </div>
           <div>
+         
           <SelectField 
           floatingLabelText="program"
-          value={this.props.value}
+          value={this.props.program}
           onChange={this.props.handleChangeFor('program')}>
           <MenuItem value={'full stack'} primaryText="Full Stack" />
           <MenuItem value={'user experience'} primaryText="User Experience" />
             </SelectField>
+
             </div>
           <div>
             <RaisedButton 

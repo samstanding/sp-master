@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import SearchBar from 'material-ui-search-bar';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
  
 class Search extends Component {
 render() {
   return(
-      <MuiThemeProvider>
     <SearchBar
-      onChange={() => console.log('onChange')}
+      onChange={() => console.log()}
       onRequestSearch={() => console.log('onRequestSearch')}
       style={{
         position: "fixed",
@@ -15,7 +14,6 @@ render() {
         maxWidth: 400,
       }}
     />
-    </MuiThemeProvider>
   )
 }
 }
