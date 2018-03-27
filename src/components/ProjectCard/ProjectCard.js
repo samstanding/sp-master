@@ -37,7 +37,6 @@ class ProjectCards extends Component {
                   <h4> {`${project.person[0].cohort} ${project.person[0].program}`} </h4>
                   <div className="Description">
                 {project.description}
-                <p>{JSON.stringify(index)}</p>
                 </div>
                 <div className="Image">
                 <img src={project.projectURL.url} id="review_img_url" alt="project screenshot"/>

@@ -7,11 +7,12 @@ const User = require('../models/Person').User;
 const router = express.Router();
 
 router.post('/', (req, res) => {
-    console.log('user info on post:', req.user);
-    let username = req.user.username;
-    let newProject = new Project(req.body.project);
-    newProject.save((error, savedProject) => {
-        if (error) {
+    if(req.isAuthenticated()) {
+        console.log('user info on post:', req.user);
+        let username = req.user.username;
+        let newProject = new Project(req.body.project);
+        newProject.save((error, savedProject) => {
+            if (error) {
             console.log('error on project post:', error);
         } else {
             User.findOneAndUpdate({
@@ -47,11 +48,14 @@ router.post('/', (req, res) => {
             )
         }
     })
+    }
+    else {
+        res.sendStatus(403);
+    }
 })
 
 router.get('/', (req, res) => {
     console.log('user info on all projects get: ', req.user);
-    
     Project.find({}).populate('person').exec((error, foundProjects) => {
         if (error) {
             console.log('error on get: ', error);
@@ -63,7 +67,8 @@ router.get('/', (req, res) => {
 });
 
 router.get('/userproject', (req, res) => {
-    console.log('user info on review ', req.user);
+    if (req.isAuthenticated()) {
+        console.log('user info on review ', req.user);
     let username = req.user.username;
     User.find({"username": username}).populate('project').exec((error, foundUser) => {
         if (error) {
@@ -74,13 +79,18 @@ router.get('/userproject', (req, res) => {
             res.send(foundUser);
         }
     })
+    }
+    else {
+        res.sendStatus(403);
+    }
 })
 
 router.put('/', (req, res) => {
-    console.log(' ------------- user info on edit: ', req.user, '------------ project to edit: ', req.body);
-    let id = req.body.project._id;
-    let editedProject = req.body;
-    Project.find({"_id": id}, 
+    if(req.isAuthenticated()) {
+        console.log(' ------------- user info on edit: ', req.user, '------------ project to edit: ', req.body);
+        let id = req.body.project._id;
+        let editedProject = req.body;
+        Project.find({"_id": id}, 
         (error, project) => {
             if (error) {
                 console.log('error on editing project', error);
@@ -92,6 +102,7 @@ router.put('/', (req, res) => {
                 project.github = req.body.project.github;
                 project.title = req.body.project.title;
                 project.description = req.body.project.description;
+                project.projectURL = req.body.project.projectURL;
                 project.save( (error, updatedProject) => {
                     if(error) {
                         console.log('error after update: ', error);
@@ -105,6 +116,10 @@ router.put('/', (req, res) => {
                 // console.log('edited project: ', updatedProject);
             } 
         })
+    } else {
+        res.sendStatus(403);
+    }
+    
 });
 
 
