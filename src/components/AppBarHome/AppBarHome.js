@@ -4,6 +4,7 @@ import FlatButton from 'material-ui/FlatButton';
 import {Link} from 'react-router-dom';
 import IconButton from 'material-ui/IconButton';
 import ActionHome from 'material-ui/svg-icons/action/home';
+import Search from '../SearchBar/SearchBar';
 
 const styles = {
     box: {
@@ -11,11 +12,11 @@ const styles = {
     },
 }
 
-const MyAppBar = () => (
+const AppBarHome = () => (
     <div>
   <AppBar
-    style={{position: "fixed", paddingtop: 0, backgroundColor: '#00cc7a',}}
-    title="Prime Solo Projects"
+    style={{backgroundColor: '#00cc99', position: "fixed", paddingtop: 0, flexWrap: 'wrap', display: 'flex', flexDirection: 'row'}}
+    title={<Search />}
     iconElementLeft=
     {
     <Link to="/home">
@@ -36,4 +37,4 @@ const MyAppBar = () => (
   
 );
 
-export default MyAppBar;
+export default AppBarHome;

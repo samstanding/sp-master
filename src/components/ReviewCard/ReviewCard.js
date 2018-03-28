@@ -14,7 +14,6 @@ const GitHubIcon = (props) => (
 
 
 class ReviewCard extends Component {
-    
   
     render() {
       

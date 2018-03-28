@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import SearchBar from '../components/SearchBar/SearchBar';
+// import AppBarHome from '../components/AppBarHome/AppBarHome';
 import ProjectCards from '../components/ProjectCard/ProjectCard';
 import {fetchProjects} from '../redux/actions/projectActions';
 
@@ -20,10 +21,8 @@ const defaultProps = {
 
 const mapStateToProps = state => ({
   list: state.projects.projects,
-  
-})
+});
 
- 
 class LandingPage extends Component {
 
   constructor(props) {
@@ -38,27 +37,18 @@ class LandingPage extends Component {
   
   onChange(event) {
     this.setState({searchText: event.target.value});
-    
+    this.handleSubmit(event);
   }
-
-  handleChangeFor = propertyName => event => {
-    this.setState({
-        ...this.state.searchText,
-        [propertyName]: event.target.value,
-        });
-    }
 
   handleSubmit(event) {
     event.preventDefault();
     let updatedList= [];
     this.props.list.filter((project) => {
-      console.log(project.description);
-      if  (project.description.toLowerCase().search(this.state.searchText.toLowerCase()) !== -1) {
+      if  (JSON.stringify(project).toLowerCase().search(this.state.searchText.toLowerCase()) !== -1) {
         updatedList.push(project);
       }
     });
     this.setState({searchResults: updatedList}); 
-    console.log(this.state.searchResults);
     
   }
  
@@ -71,23 +61,24 @@ class LandingPage extends Component {
     if (this.state.searchResults.length > 0) {
       content = (
         <div>
-        <SearchBar onChange={this.onChange} searchText={this.state.searchText} handleSubmit={this.handleSubmit} />
-        <ProjectCards list={this.state.searchResults}/>
+        {/* <AppBarHome onChange={this.onChange} searchText={this.state.searchText} handleSubmit={this.handleSubmit} /> */}
+        <ProjectCards list={this.state.searchResults}/> 
         </div>
       );
     }
     else if (this.props.list) {
       content = (
         <div>
-        <SearchBar onChange={this.onChange} searchText={this.state.searchText} handleSubmit={this.handleSubmit} />
+          {/* <AppBarHome onChange={this.onChange} searchText={this.state.searchText} handleSubmit={this.handleSubmit} />
+         */}
         <ProjectCards list={this.props.list}/>
         </div>
-      )
+      );
     }
 
     return (
       <div>
-        
+        <SearchBar onChange={this.onChange} searchText={this.state.searchText} handleSubmit={this.handleSubmit} />
         {content}
         </div>
     );

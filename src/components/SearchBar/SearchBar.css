@@ -1,0 +1,11 @@
+.Search{
+    padding:0;
+    display: inline-block;
+    align-content: left;
+    height: 100px;
+}
+
+.SearchInput {
+    display: inline-block;
+    display: right;
+}
