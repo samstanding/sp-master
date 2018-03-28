@@ -4,10 +4,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 import SvgIcon from 'material-ui/SvgIcon';
 import './ProjectCard.css';
 
-const standby = () => {
-    return 'src=../../public/favicon.ico';
-}
-
 const styles = {
     button: {
       margin: 12,

@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
-import SearchBar from 'material-ui-search-bar';
-
+// 
  
-class Search extends Component {
+class SearchBar extends Component {
 render() {
   return(
-    <SearchBar
-      onChange={() => console.log()}
-      onRequestSearch={() => console.log('onRequestSearch')}
-      style={{
-        position: "fixed",
-        margin: '40',
-        maxWidth: 400,
-      }}
-    />
+    <div>
+      <form onSubmit={this.props.handleSubmit}>
+        
+        <input type="text" className="form-control form-control-lg" placeholder="Search" 
+        value={this.props.searchText}
+        onChange={this.props.onChange}
+      />
+      <input type="submit" label="submit"/>
+      </form>
+      </div>
   )
 }
 }
 
-export default Search;
+export default SearchBar;

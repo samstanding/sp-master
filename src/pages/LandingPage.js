@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Search from '../components/SearchBar/SearchBar';
+import SearchBar from '../components/SearchBar/SearchBar';
 import ProjectCards from '../components/ProjectCard/ProjectCard';
 import {fetchProjects} from '../redux/actions/projectActions';
 
@@ -9,53 +9,58 @@ import {fetchProjects} from '../redux/actions/projectActions';
 const propTypes = {
   dispatch: PropTypes.func,
   list: PropTypes.array,
-  items: PropTypes.array,
   history: PropTypes.shape({ push: PropTypes.func }),
 };
 
 const defaultProps = {
   dispatch: () => {},
   list: {projects: []},
-  items: [],
   history: { push: () => {} },
 };
 
 const mapStateToProps = state => ({
   list: state.projects.projects,
-  items: state.items,
+  
 })
-
-// class FilteredList extends Component {
-//   constructor(props) {
-//     super(props);
-//     let updatedList = this.props.list;
-//     updatedList = updatedList.filter((item) => {
-//       return item.toLowerCase().search(event.target.toLowerCase()) !== 1;
-//     })
-//     this.setState({items: updatedList});
-//   }
-//   componentWillMount() {
-//     this.setState({items: this.props.list})
-//   }
-
-// }
 
  
 class LandingPage extends Component {
-  
-  search(event) {
-    if (this.props.list) {
-      let updatedList = this.props.list;
-      console.log(updatedList);
-      updatedList = updatedList.filter((item) => {
-        return item.toLowerCase().search(event.target.toLowerCase()) !== 1;
-      })
-      this.setState({items: updatedList});
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchText: '',
+      searchResults: [],
     }
+    this.handleSubmit=this.handleSubmit.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
- 
-  componentWillMount() {
-    this.setState({items: this.props.list})
+  
+  onChange(event) {
+    this.setState({searchText: event.target.value});
+    
+  }
+
+  handleChangeFor = propertyName => event => {
+    this.setState({
+        ...this.state.searchText,
+        [propertyName]: event.target.value,
+        });
+    }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    console.log(this.state.searchText);
+    let updatedList= [];
+    this.props.list.filter((project) => {
+      console.log(project.description);
+      if  (project.description.toLowerCase().search(this.state.searchText.toLowerCase()) !== -1) {
+        updatedList.push(project);
+      }
+    });
+    this.setState({searchResults: updatedList}); 
+    console.log(this.state.searchResults);
+    
   }
  
   componentDidMount() {
@@ -67,7 +72,7 @@ class LandingPage extends Component {
     if(this.props.list) {
       content = (
         <div>
-        <p>{JSON.stringify(this.state.items)}</p>
+        <SearchBar onChange={this.onChange} searchText={this.state.searchText} handleSubmit={this.handleSubmit} />
         <ProjectCards list={this.props.list}/>
         </div>
       )
@@ -75,8 +80,7 @@ class LandingPage extends Component {
 
     return (
       <div>
-        {/* <MyAppBar/> */}
-        <Search />
+        
         {content}
         </div>
     );
