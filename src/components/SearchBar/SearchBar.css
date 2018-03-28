@@ -1,11 +1,12 @@
 .Search{
-    padding:0;
-    display: inline-block;
-    align-content: left;
-    height: 100px;
+    position: absolute;
+    left:0px;
+    margin: 0px;
+    padding: 0px;
+    height: 20px;
+    transform: translateY(-50px);  
 }
 
-.SearchInput {
-    display: inline-block;
-    display: right;
+.SearchForm {
+    margin:0px;
 }

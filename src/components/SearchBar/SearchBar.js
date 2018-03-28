@@ -16,17 +16,13 @@ class SearchBar extends Component {
 render() {
   return(
     <div className="Search">
-      {/* <fieldset className="form-group"> */}
-      <div className="SearchInput">
-      <form onSubmit={this.props.handleSubmit}>
+      <form className="SearchForm" onSubmit={this.props.handleSubmit}>
       <TextField  
         hintText='search'
         value={this.props.searchText}
         onChange={this.props.onChange}
       />
       </form>
-      </div>
-      {/* </fieldset> */}
       </div>
   )
 }
