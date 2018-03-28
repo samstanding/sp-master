@@ -50,7 +50,6 @@ class LandingPage extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state.searchText);
     let updatedList= [];
     this.props.list.filter((project) => {
       console.log(project.description);
@@ -69,7 +68,15 @@ class LandingPage extends Component {
 
   render() {
     let content;
-    if(this.props.list) {
+    if (this.state.searchResults.length > 0) {
+      content = (
+        <div>
+        <SearchBar onChange={this.onChange} searchText={this.state.searchText} handleSubmit={this.handleSubmit} />
+        <ProjectCards list={this.state.searchResults}/>
+        </div>
+      );
+    }
+    else if (this.props.list) {
       content = (
         <div>
         <SearchBar onChange={this.onChange} searchText={this.state.searchText} handleSubmit={this.handleSubmit} />
