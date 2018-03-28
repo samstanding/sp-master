@@ -4,26 +4,25 @@ import { Link } from 'react-router-dom';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-
-injectTapEventPlugin();
+import './RegisterForm.css';
 
 
 class RegisterForm extends Component {
     render() {
         return (
-          <div>
+          <div className="RegisterFormLayout">
           <h1>Register User</h1>
           <form onSubmit={this.props.registerUser}>
-          <div>
+          <div className="RegisterFormRow">
+          <div className="FormItem">
             <TextField 
             
             floatingLabelText="username"
             value={this.props.username}
             onChange={this.props.handleChangeFor('username')}
             />
-          </div>
-          <div>
+            </div>
+            <div className="FormItem">
             <TextField 
             
             floatingLabelText="password"
@@ -32,15 +31,17 @@ class RegisterForm extends Component {
             onChange={this.props.handleChangeFor('password')}
             />
           </div>
-          <div>
+          </div>
+          <div className="RegisterFormRow">
+          <div className="FormItem">
             <TextField 
             
             floatingLabelText="first name"
             value={this.props.firstName}
             onChange={this.props.handleChangeFor('firstName')}
-            />
-          </div>
-          <div>
+            /> 
+            </div>
+            <div className="FormItem">
             <TextField 
             
             floatingLabelText="last name"
@@ -48,16 +49,17 @@ class RegisterForm extends Component {
             onChange={this.props.handleChangeFor('lastName')}
             />
           </div>
-          <div>
+          </div>
+          <div className="RegisterFormRow">
+          <div className="FormItem">
             <TextField 
 
             floatingLabelText="cohort"
             value={this.props.cohort}
             onChange={this.props.handleChangeFor('cohort')}
             />
-          </div>
-          <div>
-         
+            </div>
+            <div className="FormItem">
           <SelectField 
           floatingLabelText="program"
           value={this.props.program}
@@ -65,7 +67,7 @@ class RegisterForm extends Component {
           <MenuItem value={'full stack'} primaryText="Full Stack" />
           <MenuItem value={'user experience'} primaryText="User Experience" />
             </SelectField>
-
+            </div>
             </div>
           <div>
             <RaisedButton 

@@ -1,0 +1,13 @@
+.RegisterFormRow {
+    display:inline-flex;
+}
+
+.FormItem {
+    margin: 25px;
+}
+
+.RegisterFormLayout {
+    width: 40%;
+    margin:auto;
+    align-content: center;
+}

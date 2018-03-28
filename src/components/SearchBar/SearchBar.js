@@ -17,7 +17,9 @@ render() {
   return(
     <div className="Search">
       <form className="SearchForm" onSubmit={this.props.handleSubmit}>
-      <TextField  
+      <TextField 
+        className="SearchInput" 
+        underlineStyle={{color: '#00cc7a'}}
         hintText='search'
         value={this.props.searchText}
         onChange={this.props.onChange}

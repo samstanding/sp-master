@@ -73,10 +73,14 @@ class LoginPage extends Component {
   }
 
   render() {
+    let content;
+    if(this.state) {
+      content = <LoginForm login={this.login} handleChangeFor={this.handleChangeFor} state={this.state}/>;
+    }
     return (
       <div>
         { this.renderAlert() }
-        <LoginForm login={this.login} handleChangeFor={this.handleChangeFor} state={this.state}/>
+        {content}
       </div>
     );
   }

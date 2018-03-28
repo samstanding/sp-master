@@ -14,7 +14,7 @@ const styles = {
 const MyAppBar = () => (
     <div>
   <AppBar
-    style={{position: "fixed", paddingtop: 0, backgroundColor: '#00cc7a',}}
+    style={{position: "absolute", paddingtop: 0, backgroundColor: '#6eb69d',}}
     title="Prime Solo Projects"
     iconElementLeft=
     {
