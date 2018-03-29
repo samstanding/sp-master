@@ -3,6 +3,7 @@ import TextField from 'material-ui/TextField';
 import { Link } from 'react-router-dom';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import './RegisterForm.css';
 
@@ -60,13 +61,21 @@ class RegisterForm extends Component {
             />
             </div>
             <div className="FormItem">
-          <SelectField 
-          floatingLabelText="program"
-          value={this.props.program}
-          onChange={this.props.handleChangeFor('program')}>
-          <MenuItem value={'full stack'} primaryText="Full Stack" />
-          <MenuItem value={'user experience'} primaryText="User Experience" />
-            </SelectField>
+            <RadioButtonGroup 
+            value={this.props.program}
+            onChange={this.props.handleChangeFor('program')}>
+            <RadioButton
+            onChange={this.props.handleChangeFor('program')}
+            value="Full Stack"
+            label="Full Stack"
+            checked={this.props.program === 'Full Stack'}/>
+            <RadioButton
+            onChange={this.props.handleChangeFor('program')}
+            value='User Experience'
+            label="User Experience"
+            checked={this.props.program === 'User Experience'}
+            />
+            </RadioButtonGroup>
             </div>
             </div>
           <div>
@@ -88,3 +97,11 @@ class RegisterForm extends Component {
 }
 
 export default RegisterForm;
+
+{/* <SelectField 
+          floatingLabelText="program"
+          value={this.props.program}
+          onChange={this.props.handleChangeFor('program')}>
+          <MenuItem value={'full stack'} primaryText="Full Stack" />
+          <MenuItem value={'user experience'} primaryText="User Experience" />
+</SelectField> */}

@@ -21,7 +21,7 @@ class RegisterPage extends Component {
       firstName: '',
       lastName: '',
       cohort: '',
-      program:'full stack',
+      program:'',
       message: '',
     };
 
