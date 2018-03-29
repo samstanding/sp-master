@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import './LoginForm.css';
 
 class LoginForm extends Component {
     render() {
         return (
-        <div>
+        <div className="LoginFormLayout">
+        <div className="LoginHeader">
         <h1>Login</h1>
+        </div>
         <form onSubmit={this.props.login}>
         <div>
         <TextField 

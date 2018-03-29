@@ -11,3 +11,20 @@
     margin:auto;
     align-content: center;
 }
+
+.RegisterHeading {
+    margin: auto;
+    align-content: center;
+    width:15%;
+}
+
+.RegisterButtons {
+    display: inline-flex;
+    margin-inline-start: 10px;
+    /* align-content: center; */
+    display:flex;
+}
+
+.RegisterButton {
+    margin-right:12px;
+}

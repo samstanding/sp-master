@@ -11,8 +11,11 @@ import './RegisterForm.css';
 class RegisterForm extends Component {
     render() {
         return (
-          <div className="RegisterFormLayout">
+          <div>
+          <div className="RegisterHeading">
           <h1>Register User</h1>
+          </div>
+          <div className="RegisterFormLayout">
           <form onSubmit={this.props.registerUser}>
           <div className="RegisterFormRow">
           <div className="FormItem">
@@ -78,12 +81,14 @@ class RegisterForm extends Component {
             </RadioButtonGroup>
             </div>
             </div>
-          <div>
+          <div className="RegisterButtons">
+          <div className="RegisterButton">
             <RaisedButton 
               type="submit"
               label="Register"
               primary={true}
             />
+            </div>
             {'         '}
             <Link to="/login">
             <RaisedButton 
@@ -92,16 +97,9 @@ class RegisterForm extends Component {
           </div>
         </form>
         </div>
+        </div>
         )
     }
 }
 
 export default RegisterForm;
-
-{/* <SelectField 
-          floatingLabelText="program"
-          value={this.props.program}
-          onChange={this.props.handleChangeFor('program')}>
-          <MenuItem value={'full stack'} primaryText="Full Stack" />
-          <MenuItem value={'user experience'} primaryText="User Experience" />
-</SelectField> */}
