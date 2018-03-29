@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {triggerPost} from '../redux/actions/projectActions';
+import {triggerPost, fetchUserProject } from '../redux/actions/projectActions';
 import ProjectForm from '../components/ProjectForm/ProjectForm';
 import {fetchUser} from '../redux/actions/userActions';
 import { triggerLogout } from '../redux/actions/loginActions';
@@ -9,17 +9,20 @@ import { triggerLogout } from '../redux/actions/loginActions';
 const propTypes = {
   dispatch: PropTypes.func,
   user: PropTypes.shape({ userName: PropTypes.string, isLoading: PropTypes.bool }),
+  list:PropTypes.array,
   history: PropTypes.shape({ push: PropTypes.func }),
 };
 
 const defaultProps = {
   dispatch: () => {},
   user: { userName: null, isLoading: true },
+  list: {userProject: []},
   history: { push: () => {} },
 };
 
 const mapStateToProps = state => ({
   user: state.user,
+  list: state.userProject.userProject,
 });
 
 
@@ -63,6 +66,10 @@ class UserPage extends Component {
 
   componentDidMount() {
     this.props.dispatch(fetchUser());
+    this.props.dispatch(fetchUserProject());
+    if(this.props.userProject) {
+      this.props.history.push('edit');
+    }
   }
 
   componentDidUpdate() {

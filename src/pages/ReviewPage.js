@@ -10,7 +10,6 @@ const propTypes = {
     dispatch: PropTypes.func,
     // user: PropTypes.shape({ userName: PropTypes.string, isLoading: PropTypes.bool }),
     list: PropTypes.array,
-    // project: PropTypes.object,
     history: PropTypes.shape({ push: PropTypes.func }),
   };
   
@@ -18,7 +17,6 @@ const propTypes = {
     dispatch: () => {},
     user: { userName: null, isLoading: true },
     list: {userProject: [] },
-    // project: {},
     history: { push: () => {} },
   };
   
