@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {triggerPost, fetchUserProject } from '../redux/actions/projectActions';
+import {triggerPost } from '../redux/actions/projectActions';
 import ProjectForm from '../components/ProjectForm/ProjectForm';
 import {fetchUser} from '../redux/actions/userActions';
 import { triggerLogout } from '../redux/actions/loginActions';
@@ -9,20 +9,20 @@ import { triggerLogout } from '../redux/actions/loginActions';
 const propTypes = {
   dispatch: PropTypes.func,
   user: PropTypes.shape({ userName: PropTypes.string, isLoading: PropTypes.bool }),
-  list:PropTypes.array,
+  list: PropTypes.array,
   history: PropTypes.shape({ push: PropTypes.func }),
 };
 
 const defaultProps = {
   dispatch: () => {},
   user: { userName: null, isLoading: true },
-  list: {userProject: []},
+  list: {projects: []},
   history: { push: () => {} },
 };
 
 const mapStateToProps = state => ({
   user: state.user,
-  list: state.userProject.userProject,
+  list: state.projects.projects,
 });
 
 
@@ -63,13 +63,20 @@ class UserPage extends Component {
 
   }
 
+//   handleRoute() {
+//     if (this.props.list) {
+//     this.props.list.map( (project) => {
+//       console.log(project.person[0].username);
+//       if(project.person[0].username === this.props.user.userName) {
+//         this.props.history.push('/edit')
+//       }
+//      });
+//   }
+// }
 
   componentDidMount() {
     this.props.dispatch(fetchUser());
-    this.props.dispatch(fetchUserProject());
-    if(this.props.userProject) {
-      this.props.history.push('edit');
-    }
+  
   }
 
   componentDidUpdate() {

@@ -42,41 +42,14 @@ class EditPage extends Component {
       },
       message: '',
     };
-    // this.logout = this.logout.bind(this);
+    
     this.handleChangeFor=this.handleChangeFor.bind(this);
     this.handleSubmit=this.handleSubmit.bind(this);
-    // this.editProject = this.editProject.bind(this);
-    // this.getUserProject=this.getUserProject.bind(this);
+   
 
 
   }
 
-//   editProject(newProject) {
-//     if (this.props.list) {
-//      let projectId = this.props.list[0].project[0]._id;
-//     axios.put(`${CONSTANTS.apiBaseUrl}/projects/${projectId}`, newProject)
-//     .then(response => response)
-//     .catch(error => {
-//         console.log('error on put', error);
-//     }) 
-// }
-//   }
-  
-
-  // getUserProject () {
-  //     axios.get(`${CONSTANTS.apiBaseUrl}/projects/userproject`)
-  //     .then(response => {
-  //         console.log(response.data.project[0]);
-  //         this.setState({
-  //             project: {
-  //                 title: response.data.project[0].title,
-  //                 description: response.data.project[0].description,
-  //                 appHosted: response.data.project[0].appHosted,
-  //                 github: response.data.project[0].github,
-  //             },
-  //         })
-  //       }).catch(error => {console.log(error);});
-  // }
 
   handleChangeFor = propertyName => event => {
     this.setState({
@@ -90,7 +63,6 @@ class EditPage extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state.project);
     this.props.dispatch(triggerPut(this.state.project));
     this.props.history.push('/review');
 
