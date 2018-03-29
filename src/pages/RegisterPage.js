@@ -16,16 +16,22 @@ class RegisterPage extends Component {
     super(props);
 
     this.state = {
-      username: '',
-      password: '',
-      firstName: '',
-      lastName: '',
-      cohort: '',
-      program:'',
-      message: '',
+      
     };
 
     this.registerUser = this.registerUser.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({
+        username: '',
+        password: '',
+        firstName: '',
+        lastName: '',
+        cohort: '',
+        program:'',
+        message: '',
+    })
   }
 
   registerUser(event) {
