@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import TextField from 'material-ui/TextField';
+import TextField from 'material-ui-next/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import Button from 'material-ui-next/Button';
 import ReactFilestack from 'react-filestack';
-import './ProjectForm.css';
+import Grid from 'material-ui-next/Grid'
+// import './ProjectForm.css';
 
-const styles = {
+const styles = theme =>  ({
     button: {
       margin: 12,
     },
@@ -18,7 +20,15 @@ const styles = {
       width: '100%',
       opacity: 0,
     },
-  };
+    textField: {
+      marginLeft: theme.spacing.unit*2,
+      marginRight: theme.spacing.unit*2,
+      width: 200,
+    },
+    root: {
+      flexGrow: 1,
+    },
+  });
 
 class ProjectFrom extends Component {
         render() {
@@ -28,34 +38,40 @@ class ProjectFrom extends Component {
                 <form onSubmit={this.props.handleSubmit}>
                 <div>
                 <TextField
-                hintText="title"
-                floatingLabelText="title"
+                id="title"
+                label="project title"
+                placeholder="project title"
+                className={this.props.textField}
                 value={this.props.project.title}
                 onChange={this.props.handleChangeFor('title')}
                 />
                 </div>
                 <div>
                 <TextField 
-                hintText="description"
-                floatingLabelText="description"
-                multiLine={true}
-                rows={2}
+                id="textarea"
+                label="project description"
+                placeholder="What problem does your app solve? What technology did you use? APIs?"
+                className={this.props.textField}
+                multiline
+                rows={4}
                 onChange={this.props.handleChangeFor('description')}
                 value={this.props.project.description}
                 />
                 </div>
                 <div>
                 <TextField
-                hintText="github URL"
-                floatingLabelText="github URL"
+                id="github url"
+                label="github url"
+                placeholder="github url"
                 onChange={this.props.handleChangeFor('github')}
                 value={this.props.project.github}
                 />
                 </div>
                 <div>
                 <TextField
-                hintText="hosted URL"
-                floatingLabelText="hosted URL"
+                id="hosted url"
+                label="hosted url"
+                placeholder="hosted url"
                 onChange={this.props.handleChangeFor('appHosted')}
                 value={this.props.project.appHosted}
                 />
@@ -66,7 +82,7 @@ class ProjectFrom extends Component {
                 value={this.props.project.projectURL} 
                 labelPosition="before"
                 containerElement="label"
-                label="Upload a screenshot of your project"
+                label="Upload a screenshot"
                 style={styles.button}>
                 <ReactFilestack 
                 apikey={'Axw9wpmiCSCSKeOsBQCQ4z'} 
@@ -78,14 +94,16 @@ class ProjectFrom extends Component {
                 } }
                 onError={(e) => console.log(e)}
                 buttonText={''}
-                buttonClass="fs-button"
+                // buttonClass="fs-button"
                  />
                 </RaisedButton>
                 </div>
-                <RaisedButton
+                <Button
+                variant="raised"
                 type="submit" 
                 label="submit"
-                primary={true}/>
+                color="primary">
+                Submit</Button>
                   </form> 
                   </div>
             );
