@@ -8,7 +8,7 @@ import Search from '../SearchBar/SearchBar';
 
 const styles = {
     box: {
-        height: '128px',
+        height: '64px',
     },
 }
 

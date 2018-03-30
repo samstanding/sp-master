@@ -1,69 +1,99 @@
 import React, { Component } from 'react';
-import TextField from 'material-ui/TextField';
+import TextField from 'material-ui-next/TextField';
 import { Link } from 'react-router-dom';
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
-import RaisedButton from 'material-ui/RaisedButton';
-import './RegisterForm.css';
+import Button from 'material-ui-next/Button';
+import Grid from 'material-ui-next/Grid';
+// import './RegisterForm.css';
 
+const styles = theme => ({
+  container: {
+    display:'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    marginLeft: theme.spacing.unit*2,
+    marginRight: theme.spacing.unit*2,
+    width: 200,
+  },
+  button: {
+    margin: theme.spacing.unit
+}, 
+  root: {
+    flexGrow: 1,
+  },
+  control: {
+    padding: theme.spacing.unit *2,
+  },
+})
 
 class RegisterForm extends Component {
     render() {
         return (
-          <div>
-          <div className="RegisterHeading">
+          <Grid className={this.props.root} spacing={16}> 
+          <Grid container className={this.props.root} justify="center" item xs={12}>
           <h1>Register User</h1>
-          </div>
+          </Grid>
           <div className="RegisterFormLayout">
-          <form onSubmit={this.props.registerUser}>
-          <div className="RegisterFormRow">
-          <div className="FormItem">
+          <form onSubmit={this.props.registerUser} className={this.props.container}>
+          <Grid container className={this.props.control} justify="center" item xs={12} spacing={24}>
+          {/* <div className="FormItem"> */}
+          <Grid item>
             <TextField 
-            
-            floatingLabelText="username"
-            value={this.props.username}
-            onChange={this.props.handleChangeFor('username')}
+             id="username"
+             label="username"
+             placeholder="username"
+             className={this.props.textField}
+             value={this.props.username}
+             onChange={this.props.handleChangeFor('username')}
             />
-            </div>
-            <div className="FormItem">
+            </Grid>
+            {/* </div> */}
+            {/* <div className="FormItem"> */}
+            <Grid item>
             <TextField 
-            
-            floatingLabelText="password"
+            id="password-input"
             type="password"
+            label="password"
+            placeholder="password"
+            className={this.props.textField}
             value={this.props.password}
             onChange={this.props.handleChangeFor('password')}
             />
-          </div>
-          </div>
-          <div className="RegisterFormRow">
-          <div className="FormItem">
+          {/* </div> */}
+          </Grid>
+          </Grid>
+          <Grid container className={this.props.control} justify="center" item xs={12} spacing={24}>
+            <Grid item>
             <TextField 
-            
-            floatingLabelText="first name"
+            id="first name"
+            label="first name"
+            placeholder="first name"
             value={this.props.firstName}
             onChange={this.props.handleChangeFor('firstName')}
             /> 
-            </div>
-            <div className="FormItem">
+            </Grid>
+            <Grid item>
             <TextField 
-            
-            floatingLabelText="last name"
+            id="last name"
+            label="last name"
+            placeholder="last name"
             value={this.props.lastName}
             onChange={this.props.handleChangeFor('lastName')}
             />
-          </div>
-          </div>
-          <div className="RegisterFormRow">
-          <div className="FormItem">
+          </Grid>
+          </Grid>
+          <Grid container className={this.props.control} justify="center" item xs={12} spacing={24}>
+            <Grid item>
             <TextField 
-
-            floatingLabelText="cohort"
+            id="cohort"
+            label="cohort"
+            placeholder="last name"
             value={this.props.cohort}
             onChange={this.props.handleChangeFor('cohort')}
             />
-            </div>
-            <div className="FormItem">
+            </Grid>
+            <Grid item >
             <RadioButtonGroup 
             value={this.props.program}
             onChange={this.props.handleChangeFor('program')}>
@@ -79,25 +109,28 @@ class RegisterForm extends Component {
             checked={this.props.program === 'User Experience'}
             />
             </RadioButtonGroup>
-            </div>
-            </div>
+            </Grid>
+            </Grid>
           <div className="RegisterButtons">
           <div className="RegisterButton">
-            <RaisedButton 
-              type="submit"
-              label="Register"
-              primary={true}
-            />
+            <Button 
+              variant="raised"
+              color="primary"
+            >
+            Register
+            </Button>
             </div>
             {'         '}
-            <Link to="/login">
-            <RaisedButton 
-            label="cancel"/>
-            </Link>
+            <Button
+            component={Link} to="/login"
+            variant="raised"
+            label="cancel"> 
+            cancel
+            </Button>
           </div>
         </form>
         </div>
-        </div>
+        </Grid>
         )
     }
 }
