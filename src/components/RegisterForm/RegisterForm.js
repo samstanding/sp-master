@@ -17,7 +17,8 @@ const styles = theme => ({
     width: 200,
   },
   button: {
-    margin: theme.spacing.unit
+    margin: theme.spacing.unit,
+    padding: 50,
 }, 
   root: {
     flexGrow: 1,
@@ -30,15 +31,15 @@ const styles = theme => ({
 class RegisterForm extends Component {
     render() {
         return (
-          <Grid className={this.props.root} spacing={16}> 
-          <Grid container className={this.props.root} justify="center" item xs={12}>
+          
+          <Grid className={this.props.root}> 
+          <Grid container className={this.props.root} justify="center" item xs={11}>
           <h1>Register User</h1>
           </Grid>
-          <div className="RegisterFormLayout">
-          <form onSubmit={this.props.registerUser} className={this.props.container}>
-          <Grid container className={this.props.control} justify="center" item xs={12} spacing={24}>
+          <form onSubmit={this.props.registerUser} className={this.props.container}>          
+          <Grid container className={this.props.control} justify="center" item xs={12} >
           {/* <div className="FormItem"> */}
-          <Grid item>
+          <Grid item xs={2}>
             <TextField 
              id="username"
              label="username"
@@ -50,7 +51,7 @@ class RegisterForm extends Component {
             </Grid>
             {/* </div> */}
             {/* <div className="FormItem"> */}
-            <Grid item>
+            <Grid item xs={2}>
             <TextField 
             id="password-input"
             type="password"
@@ -63,8 +64,8 @@ class RegisterForm extends Component {
           {/* </div> */}
           </Grid>
           </Grid>
-          <Grid container className={this.props.control} justify="center" item xs={12} spacing={24}>
-            <Grid item>
+          <Grid container className={this.props.control} justify="center" item xs={12} >
+            <Grid item xs={2}>
             <TextField 
             id="first name"
             label="first name"
@@ -73,7 +74,7 @@ class RegisterForm extends Component {
             onChange={this.props.handleChangeFor('firstName')}
             /> 
             </Grid>
-            <Grid item>
+            <Grid item xs={2}>
             <TextField 
             id="last name"
             label="last name"
@@ -83,8 +84,8 @@ class RegisterForm extends Component {
             />
           </Grid>
           </Grid>
-          <Grid container className={this.props.control} justify="center" item xs={12} spacing={24}>
-            <Grid item>
+          <Grid container className={this.props.control} justify="center" item xs={12} >
+            <Grid item xs={2}>
             <TextField 
             id="cohort"
             label="cohort"
@@ -93,7 +94,7 @@ class RegisterForm extends Component {
             onChange={this.props.handleChangeFor('cohort')}
             />
             </Grid>
-            <Grid item >
+            <Grid item xs={2}>
             <RadioButtonGroup 
             value={this.props.program}
             onChange={this.props.handleChangeFor('program')}>
@@ -111,26 +112,30 @@ class RegisterForm extends Component {
             </RadioButtonGroup>
             </Grid>
             </Grid>
-          <div className="RegisterButtons">
-          <div className="RegisterButton">
+            <br/>
+            <Grid container className={this.props.control} justify="center" item xs={12} spacing={40} >
+            <Grid item xs={2}>
             <Button 
               variant="raised"
               color="primary"
+              type="submit"
             >
             Register
             </Button>
-            </div>
-            {'         '}
+            </Grid>
+            <Grid item xs={2}>
             <Button
             component={Link} to="/login"
             variant="raised"
             label="cancel"> 
             cancel
             </Button>
-          </div>
-        </form>
-        </div>
+            </Grid>
+          </Grid>
+       
+          </form>
         </Grid>
+        
         )
     }
 }
