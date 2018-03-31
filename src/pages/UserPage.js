@@ -87,7 +87,7 @@ class UserPage extends Component {
 
   logout() {
     this.props.dispatch(triggerLogout());
-    // this.props.history.push('home');
+ 
   }
 
   render() {
@@ -96,12 +96,12 @@ class UserPage extends Component {
     if (this.props.user.userName) {
       content = (
         <div>
-          <ProjectForm handleChangeFor={this.handleChangeFor} project={this.state.project} handleSubmit={this.handleSubmit} />
-          <button
-            onClick={this.logout}
+          <ProjectForm handleChangeFor={this.handleChangeFor} project={this.state.project} handleSubmit={this.handleSubmit} logout={this.logout} />
+          {/* <button
+            
           >
             Log Out
-          </button>
+          </button> */}
         </div>
       );
     }

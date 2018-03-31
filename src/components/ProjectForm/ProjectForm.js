@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui-next/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
 import Button from 'material-ui-next/Button';
 import ReactFilestack from 'react-filestack';
 import Grid from 'material-ui-next/Grid'
-// import './ProjectForm.css';
+import './ProjectForm.css';
+
+let space = ' ';
 
 const styles = theme =>  ({
     button: {
@@ -28,15 +30,21 @@ const styles = theme =>  ({
     root: {
       flexGrow: 1,
     },
+    extra: {
+      flexGrow: 2,
+    }
   });
 
 class ProjectFrom extends Component {
         render() {
             return ( 
-                <div>
-                <h2>This is where you'll upload a project</h2>
+                <Grid className={this.props.root}>
+                <Grid container className={this.props.root} justify="center" item xs={11}>
+                <h2>Upload Your Project</h2>
+                </Grid>
                 <form onSubmit={this.props.handleSubmit}>
-                <div>
+                <Grid container className={this.props.root} justify="center" item xs={12}>
+                <Grid item xs={2}>
                 <TextField
                 id="title"
                 label="project title"
@@ -45,8 +53,19 @@ class ProjectFrom extends Component {
                 value={this.props.project.title}
                 onChange={this.props.handleChangeFor('title')}
                 />
-                </div>
-                <div>
+                </Grid>
+                <Grid item xs={2}>
+                <TextField
+                id="github url"
+                label="github url"
+                placeholder="github url"
+                onChange={this.props.handleChangeFor('github')}
+                value={this.props.project.github}
+                />
+                </Grid>
+                </Grid>
+                <Grid container className={this.props.extra} justify="center" item xs={12}>
+                <Grid item xs={2}>
                 <TextField 
                 id="textarea"
                 label="project description"
@@ -57,17 +76,8 @@ class ProjectFrom extends Component {
                 onChange={this.props.handleChangeFor('description')}
                 value={this.props.project.description}
                 />
-                </div>
-                <div>
-                <TextField
-                id="github url"
-                label="github url"
-                placeholder="github url"
-                onChange={this.props.handleChangeFor('github')}
-                value={this.props.project.github}
-                />
-                </div>
-                <div>
+                </Grid>
+                <Grid item xs={2}>
                 <TextField
                 id="hosted url"
                 label="hosted url"
@@ -75,15 +85,18 @@ class ProjectFrom extends Component {
                 onChange={this.props.handleChangeFor('appHosted')}
                 value={this.props.project.appHosted}
                 />
-                </div>
-                <div>
-                <RaisedButton
+                <br/>
+                <br/>
+                <FlatButton
                 onChange={this.props.handleChangeFor('projectURL')}
                 value={this.props.project.projectURL} 
                 labelPosition="before"
                 containerElement="label"
-                label="Upload a screenshot"
-                style={styles.button}>
+                label={`${space} Upload a screenshot`}
+                style={this.props.button}
+                
+               
+                >
                 <ReactFilestack 
                 apikey={'Axw9wpmiCSCSKeOsBQCQ4z'} 
                 mode={'pick'}
@@ -94,18 +107,32 @@ class ProjectFrom extends Component {
                 } }
                 onError={(e) => console.log(e)}
                 buttonText={''}
-                // buttonClass="fs-button"
+                buttonClass="fs-button"
                  />
-                </RaisedButton>
-                </div>
+                </FlatButton>
+                </Grid>
+                </Grid>
+                <br/>
+                <Grid container className={this.props.root} justify="center" item xs={12}>
+                <Grid item xs={2}>
                 <Button
                 variant="raised"
                 type="submit" 
                 label="submit"
                 color="primary">
                 Submit</Button>
+                </Grid>
+                <Grid item xs={2}>
+                <Button 
+                variant="raised"
+                onClick={this.props.logout}
+                label="log out">
+                Log out
+                </Button>
+                </Grid>
+                </Grid>
                   </form> 
-                  </div>
+                  </Grid>
             );
     }
 }

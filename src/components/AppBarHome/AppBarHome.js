@@ -20,8 +20,8 @@ const AppBarHome = () => (
     iconElementLeft=
     {
     <Link to="/home">
-    <IconButton>
-    <ActionHome />
+    <IconButton >
+    <ActionHome  style={{backgroundColor: 'white'}}/>
     </IconButton>
     </Link>  
     }
