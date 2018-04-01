@@ -104,18 +104,8 @@ class EditPage extends Component {
     if(this.props.list) {
       content = (
         <div>
-          <h1
-            id="welcome"
-          >
-            Welcome, { this.props.user.userName }!
-          </h1>
           <h2>Here's where you can make changes to your project inputs</h2>
           <ProjectForm handleChangeFor={this.handleChangeFor} project={this.state.project} handleSubmit={this.handleSubmit} />
-          <button
-            onClick={this.logout}
-          >
-            Log Out
-          </button>
         </div>
       );
     }

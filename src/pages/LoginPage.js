@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Grid from 'material-ui-next/Grid';
 import { triggerLogin, formError, clearError } from '../redux/actions/loginActions';
 import LoginForm from '../components/LoginForm/LoginForm';
+
 
 const propTypes = {
   dispatch: PropTypes.func,
@@ -61,12 +63,14 @@ class LoginPage extends Component {
   renderAlert() {
     if (this.props.login.message !== '') {
       return (
+        <Grid container justify="center" item xs={11}>
         <h2
           className="alert"
           role="alert"
         >
           { this.props.login.message }
         </h2>
+        </Grid>
       );
     }
     return (<span />);

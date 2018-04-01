@@ -6,7 +6,6 @@ import ReactFilestack from 'react-filestack';
 import Grid from 'material-ui-next/Grid'
 import './ProjectForm.css';
 
-let space = ' ';
 
 const styles = theme =>  ({
     button: {
@@ -92,7 +91,7 @@ class ProjectFrom extends Component {
                 value={this.props.project.projectURL} 
                 labelPosition="before"
                 containerElement="label"
-                label={`${space} Upload a screenshot`}
+                label={`Upload a screenshot`}
                 style={this.props.button}
                 
                

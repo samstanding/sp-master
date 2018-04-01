@@ -97,11 +97,7 @@ class UserPage extends Component {
       content = (
         <div>
           <ProjectForm handleChangeFor={this.handleChangeFor} project={this.state.project} handleSubmit={this.handleSubmit} logout={this.logout} />
-          {/* <button
-            
-          >
-            Log Out
-          </button> */}
+         
         </div>
       );
     }

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Card, CardActions, CardText} from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import SvgIcon from 'material-ui/SvgIcon';
+import ReviewButtons from '../ReviewButtons/ReviewButtons';
 import './ReviewCard.css';
 
 
@@ -50,7 +51,7 @@ class ReviewCard extends Component {
              </Card>
                 ))}
              </div>
-             
+             <ReviewButtons/>
             </div>
         );
     }

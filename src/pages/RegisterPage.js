@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Grid from 'material-ui-next/Grid';
 import CONSTANTS from '../constants/';
 import RegisterForm from '../components/RegisterForm/RegisterForm';
 
@@ -85,12 +86,14 @@ class RegisterPage extends Component {
   renderAlert() {
     if (this.state.message !== '') {
       return (
+        <Grid container justify="center" item xs={11}>
         <h2
           className="alert"
           role="alert"
         >
           {this.state.message}
         </h2>
+        </Grid>
       );
     }
     return (<span />);

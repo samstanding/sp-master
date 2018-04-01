@@ -1,22 +1,43 @@
 import React, {Component} from 'react';
-import RaisedButton from 'material-ui/RaisedButton';
+import Button from 'material-ui-next/Button';
 import { Link } from 'react-router-dom';
+import Grid from 'material-ui-next/Grid'
+
+const styles = theme => ({
+    root: {
+        flexGrow: 1,
+    },
+    button : {
+        padding: theme.spacing.unit*2,
+        alignContent: 'center',
+    }
+})
 
 
 class ReviewButtons extends Component {
     render() {
         return (
-            <div className="Buttons">
-            <div className="SubmitButton">
-            <Link to="/home">
-            <RaisedButton label="Look's great. Submit!" primary={true} />
-            </Link>
-            </div>
-            <div className="BackButton">
-            <Link to ="/edit">
-            <RaisedButton label="Nope! I need to make a change" secondary={true} />
-            </Link>
-            </div>
+            <div className={this.props.root}>
+            <Grid container item xs={12} justify="center">
+            <Grid item xs={3} className={this.props.button}>
+            <Button 
+            variant="raised"
+            component={Link} to="/home"
+            label="Look's great. Submit!" 
+            color="primary" >
+            Look's great. Submit!
+            </Button>
+            </Grid>
+            <Grid item xs={6} className={this.props.button}>
+            <Button
+            variant="raised"
+            component={Link} to="/edit"
+            label="Nope! I need to make a change"
+            color="secondary">
+            Nope! I need to make a change
+            </Button>
+            </Grid>
+            </Grid>
             </div>
         )
     }

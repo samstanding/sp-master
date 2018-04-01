@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Grid from 'material-ui-next/Grid';
 // import {fetchUser } from '../redux/actions/userActions';
 // import {fetchUserProject} from '../redux/actions/projectActions';
 import ReviewCard from '../components/ReviewCard/ReviewCard';
@@ -43,7 +44,7 @@ class ReviewPage extends Component {
         content = (
             <div>
             <ReviewCard list={this.props.list}/>
-            <ReviewButtons />
+            
             </div>
         ); 
             
@@ -51,7 +52,9 @@ class ReviewPage extends Component {
         
         return (
             <div>
+            <Grid container justify="center" item xs={12}> 
             <h1>Great! Here's a preview of your solo project. Everything look alright?</h1>
+            </Grid>
             {content}
             </div>
         );
