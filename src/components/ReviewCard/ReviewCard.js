@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import {Card, CardActions, CardText} from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import SvgIcon from 'material-ui/SvgIcon';
+import Grid from 'material-ui-next/Grid';
+import Button from 'material-ui-next/Button';
+import { Link } from 'react-router-dom';
 import ReviewButtons from '../ReviewButtons/ReviewButtons';
 import './ReviewCard.css';
 
@@ -51,7 +54,29 @@ class ReviewCard extends Component {
              </Card>
                 ))}
              </div>
-             <ReviewButtons/>
+             <div className="ReviewButtons">
+            <Grid container item xs={12} justify="space-around">
+        
+            <Grid  className={this.props.button}>
+            <Button 
+            variant="raised"
+            component={Link} to="/home"
+            label="Look's great. Submit!" 
+            color="primary" >
+            Look's great. Submit!
+            </Button>
+            </Grid>
+            <Grid  className={this.props.button}>
+            <Button
+            variant="raised"
+            component={Link} to="/edit"
+            label="Nope! I need to make a change"
+            color="secondary">
+            Nope! I need to make a change
+            </Button>
+            </Grid>
+            </Grid>
+            </div>
             </div>
         );
     }

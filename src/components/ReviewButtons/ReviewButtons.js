@@ -17,7 +17,7 @@ const styles = theme => ({
 class ReviewButtons extends Component {
     render() {
         return (
-            <div className={this.props.root}>
+            
             <Grid container item xs={12} justify="space-around">
         
             <Grid  className={this.props.button}>
@@ -39,7 +39,7 @@ class ReviewButtons extends Component {
             </Button>
             </Grid>
             </Grid>
-            </div>
+           
         )
     }
 }

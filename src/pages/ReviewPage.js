@@ -44,7 +44,6 @@ class ReviewPage extends Component {
         content = (
             <div>
             <ReviewCard list={this.props.list}/>
-            
             </div>
         ); 
             
