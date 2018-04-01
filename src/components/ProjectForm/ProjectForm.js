@@ -4,7 +4,7 @@ import FlatButton from 'material-ui/FlatButton';
 import Button from 'material-ui-next/Button';
 import ReactFilestack from 'react-filestack';
 import Grid from 'material-ui-next/Grid'
-import './ProjectForm.css';
+import './ProjectForm2.css';
 
 
 const styles = theme =>  ({
@@ -50,6 +50,7 @@ class ProjectFrom extends Component {
                 placeholder="project title"
                 className={this.props.textField}
                 value={this.props.project.title}
+                required={true}
                 onChange={this.props.handleChangeFor('title')}
                 />
                 </Grid>
@@ -70,6 +71,7 @@ class ProjectFrom extends Component {
                 label="project description"
                 placeholder="What problem does your app solve? What technology did you use? APIs?"
                 className={this.props.textField}
+                required={true}
                 multiline
                 rows={4}
                 onChange={this.props.handleChangeFor('description')}

@@ -1,6 +1,6 @@
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
-import FlatButton from 'material-ui/FlatButton';
+import Button from 'material-ui-next/Button';
 import {Link} from 'react-router-dom';
 import IconButton from 'material-ui/IconButton';
 import ActionHome from 'material-ui/svg-icons/action/home';
@@ -8,6 +8,9 @@ import ActionHome from 'material-ui/svg-icons/action/home';
 const styles = {
     box: {
         height: '128px',
+    },
+    icon: {
+        color: 'white',
     },
 }
 
@@ -19,16 +22,19 @@ const MyAppBar = () => (
     iconElementLeft=
     {
     <Link to="/home">
-    <IconButton>
+    <IconButton style ={styles.icon}>
     <ActionHome />
     </IconButton>
     </Link>  
     }
     iconElementRight=
     {
-    <Link to="/login"> 
-    <FlatButton label="Upload"/> 
-    </Link>
+    
+   
+    <Button label="Upload"
+    component= {Link} to="/login" > 
+    Upload
+    </Button>
     }
   />
   <div style={styles.box}> </div>

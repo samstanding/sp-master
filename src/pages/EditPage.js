@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import axios from 'axios';
-// import CONSTANTS from './../constants';
+import Grid from 'material-ui-next/Grid';
 import ProjectForm from '../components/ProjectForm/ProjectForm';
 import {triggerPut} from  '../redux/actions/projectActions';
 
@@ -104,7 +103,7 @@ class EditPage extends Component {
     if(this.props.list) {
       content = (
         <div>
-          <h2>Here's where you can make changes to your project inputs</h2>
+          
           <ProjectForm handleChangeFor={this.handleChangeFor} project={this.state.project} handleSubmit={this.handleSubmit} />
         </div>
       );
@@ -112,6 +111,9 @@ class EditPage extends Component {
 
     return (
       <div>
+        <Grid container justify="center" item xs={12}> 
+        <h2>Edit your project</h2>
+        </Grid>
         { content }
       </div>
     );

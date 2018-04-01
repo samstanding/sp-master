@@ -18,8 +18,9 @@ class ReviewButtons extends Component {
     render() {
         return (
             <div className={this.props.root}>
-            <Grid container item xs={12} justify="center">
-            <Grid item xs={3} className={this.props.button}>
+            <Grid container item xs={12} justify="space-around">
+        
+            <Grid  className={this.props.button}>
             <Button 
             variant="raised"
             component={Link} to="/home"
@@ -28,7 +29,7 @@ class ReviewButtons extends Component {
             Look's great. Submit!
             </Button>
             </Grid>
-            <Grid item xs={6} className={this.props.button}>
+            <Grid  className={this.props.button}>
             <Button
             variant="raised"
             component={Link} to="/edit"
