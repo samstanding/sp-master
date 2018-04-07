@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import Button from 'material-ui-next/Button';
 import Grid from 'material-ui-next/Grid';
-// import './RegisterForm.css';
 
 const styles = theme => ({
   container: {
@@ -38,7 +37,7 @@ class RegisterForm extends Component {
           </Grid>
           <form onSubmit={this.props.registerUser} className={this.props.container}>          
           <Grid container className={this.props.control} justify="center" item xs={12} >
-          {/* <div className="FormItem"> */}
+         
           <Grid item xs={2}>
             <TextField 
              id="username"
@@ -49,8 +48,7 @@ class RegisterForm extends Component {
              onChange={this.props.handleChangeFor('username')}
             />
             </Grid>
-            {/* </div> */}
-            {/* <div className="FormItem"> */}
+           
             <Grid item xs={2}>
             <TextField 
             id="password-input"
@@ -61,7 +59,7 @@ class RegisterForm extends Component {
             value={this.props.password}
             onChange={this.props.handleChangeFor('password')}
             />
-          {/* </div> */}
+         
           </Grid>
           </Grid>
           <Grid container className={this.props.control} justify="center" item xs={12} >
@@ -132,7 +130,6 @@ class RegisterForm extends Component {
             </Button>
             </Grid>
           </Grid>
-       
           </form>
         </Grid>
         

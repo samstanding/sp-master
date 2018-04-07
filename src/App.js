@@ -1,8 +1,6 @@
 import React from 'react';
 import {HashRouter as Router, Route, Redirect, Switch, } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-// import Header from './components/Header/Header';
-// import Nav from './components/Nav/Nav';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import UserPage from './pages/UserPage';
@@ -17,8 +15,6 @@ const App = () => (
   <MuiThemeProvider>
   <Router>
   <div>
-    {/* <Header title="Prime Solo Projects" /> */}
-    {/* <Nav/> */}
     <div>
     <MyAppBar />
       </div>

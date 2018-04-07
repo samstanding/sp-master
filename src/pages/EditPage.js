@@ -6,7 +6,6 @@ import ProjectForm from '../components/ProjectForm/ProjectForm';
 import {triggerPut} from  '../redux/actions/projectActions';
 
 
-
 const propTypes = {
   dispatch: PropTypes.func,
   user: PropTypes.shape({ userName: PropTypes.string, isLoading: PropTypes.bool }),
@@ -44,9 +43,6 @@ class EditPage extends Component {
     
     this.handleChangeFor=this.handleChangeFor.bind(this);
     this.handleSubmit=this.handleSubmit.bind(this);
-   
-
-
   }
 
 
@@ -69,7 +65,6 @@ class EditPage extends Component {
 
 
   componentDidMount() {
-    // this.getUserProject();
     if(this.props.list) {
       this.setState({
         project: {
@@ -82,8 +77,6 @@ class EditPage extends Component {
         },
       });
     }
-    
-
   }
 
 
@@ -93,17 +86,11 @@ class EditPage extends Component {
     }
   }
 
- 
-
- 
-  
-
   render() {
     let content = null;
     if(this.props.list) {
       content = (
         <div>
-          
           <ProjectForm handleChangeFor={this.handleChangeFor} project={this.state.project} handleSubmit={this.handleSubmit} />
         </div>
       );

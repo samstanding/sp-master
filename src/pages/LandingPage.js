@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import SearchBar from '../components/SearchBar/SearchBar';
-// import AppBarHome from '../components/AppBarHome/AppBarHome';
 import ProjectCards from '../components/ProjectCard/ProjectCard';
 import {fetchProjects} from '../redux/actions/projectActions';
 
@@ -43,10 +42,8 @@ class LandingPage extends Component {
   handleSubmit(event) {
     event.preventDefault();
     let updatedList= [];
-    this.props.list.filter((project) => {
-      if  (JSON.stringify(project).toLowerCase().search(this.state.searchText.toLowerCase()) !== -1) {
-        updatedList.push(project);
-      }
+    updatedList = this.props.list.filter((project) => {
+       return JSON.stringify(project).toLowerCase().search(this.state.searchText.toLowerCase()) !== -1 
     });
     this.setState({searchResults: updatedList}); 
     
@@ -61,7 +58,6 @@ class LandingPage extends Component {
     if (this.state.searchResults.length > 0) {
       content = (
         <div>
-        {/* <AppBarHome onChange={this.onChange} searchText={this.state.searchText} handleSubmit={this.handleSubmit} /> */}
         <ProjectCards list={this.state.searchResults}/> 
         </div>
       );
@@ -69,8 +65,6 @@ class LandingPage extends Component {
     else if (this.props.list) {
       content = (
         <div>
-          {/* <AppBarHome onChange={this.onChange} searchText={this.state.searchText} handleSubmit={this.handleSubmit} />
-         */}
         <ProjectCards list={this.props.list}/>
         </div>
       );

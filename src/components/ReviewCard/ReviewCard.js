@@ -43,7 +43,6 @@ class ReviewCard extends Component {
                  href={`${project.project[0].github}`}
                  target="_blank"
                  label="Github Link"
-                //  style={styles.button}
                  icon={<GitHubIcon />}
                  />
                  <RaisedButton 
@@ -54,6 +53,12 @@ class ReviewCard extends Component {
              </Card>
                 ))}
              </div>
+             <br/>
+             <br/>
+             <br/>
+             <br/>
+             <br/>
+             <br/>
              <div className="ReviewButtons">
             <Grid container item xs={12} justify="space-around">
         

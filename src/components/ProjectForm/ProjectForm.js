@@ -4,7 +4,7 @@ import FlatButton from 'material-ui/FlatButton';
 import Button from 'material-ui-next/Button';
 import ReactFilestack from 'react-filestack';
 import Grid from 'material-ui-next/Grid'
-import './ProjectForm2.css';
+import './ProjectForm.css';
 
 
 const styles = theme =>  ({

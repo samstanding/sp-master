@@ -60,23 +60,10 @@ class UserPage extends Component {
     event.preventDefault();
     this.props.dispatch(triggerPost(this.state.project));
     this.props.history.push('/review');
-
   }
-
-//   handleRoute() {
-//     if (this.props.list) {
-//     this.props.list.map( (project) => {
-//       console.log(project.person[0].username);
-//       if(project.person[0].username === this.props.user.userName) {
-//         this.props.history.push('/edit')
-//       }
-//      });
-//   }
-// }
 
   componentDidMount() {
     this.props.dispatch(fetchUser());
-  
   }
 
   componentDidUpdate() {
@@ -87,17 +74,14 @@ class UserPage extends Component {
 
   logout() {
     this.props.dispatch(triggerLogout());
- 
   }
 
   render() {
     let content = null;
-
     if (this.props.user.userName) {
       content = (
         <div>
           <ProjectForm handleChangeFor={this.handleChangeFor} project={this.state.project} handleSubmit={this.handleSubmit} logout={this.logout} />
-         
         </div>
       );
     }
@@ -113,6 +97,6 @@ class UserPage extends Component {
 UserPage.propTypes = propTypes;
 UserPage.defaultProps = defaultProps;
 
-// this allows us to use <App /> in index.js
+
 export default connect(mapStateToProps)(UserPage);
 

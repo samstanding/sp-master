@@ -2,14 +2,6 @@ import React, { Component } from 'react';
 import TextField from 'material-ui/TextField'
 import './SearchBar.css';
 
- 
-// const styles = {
-
-//   control: {
-//     border: '2rem',
-//     padding: '25px 15px'
-//   }
-// }
 
 
 class SearchBar extends Component {

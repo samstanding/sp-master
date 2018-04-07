@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Grid from 'material-ui-next/Grid';
-// import {fetchUser } from '../redux/actions/userActions';
-// import {fetchUserProject} from '../redux/actions/projectActions';
 import ReviewCard from '../components/ReviewCard/ReviewCard';
 import ReviewButtons from '../components/ReviewButtons/ReviewButtons';
 
 const propTypes = {
     dispatch: PropTypes.func,
-    // user: PropTypes.shape({ userName: PropTypes.string, isLoading: PropTypes.bool }),
+   
     list: PropTypes.array,
     history: PropTypes.shape({ push: PropTypes.func }),
   };
@@ -23,20 +21,12 @@ const propTypes = {
   
   const mapStateToProps = state => ({
     list: state.userProject.userProject,
-    // user: state.user,
+   
   });
 
 
 
 class ReviewPage extends Component {
- 
-  
-    componentDidMount() {
-        // this.props.dispatch(fetchUser());
-        // this.props.dispatch(fetchUserProject());
-      }
-
-   
 
     render() {
         let content;
@@ -48,7 +38,7 @@ class ReviewPage extends Component {
         ); 
             
     }
-        
+
         return (
             <div>
             <Grid container justify="center" item xs={12}> 

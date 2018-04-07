@@ -56,8 +56,6 @@ class RegisterPage extends Component {
         }),
       });
 
-      // making the request to the server to post the country
-      //this is the same type of function you would do to verify good link
       fetch(request)
         .then((response) => {
           if (response.status === 201) {
