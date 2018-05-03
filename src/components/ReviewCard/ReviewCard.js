@@ -5,7 +5,6 @@ import SvgIcon from 'material-ui/SvgIcon';
 import Grid from 'material-ui-next/Grid';
 import Button from 'material-ui-next/Button';
 import { Link } from 'react-router-dom';
-import ReviewButtons from '../ReviewButtons/ReviewButtons';
 import './ReviewCard.css';
 
 

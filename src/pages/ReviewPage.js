@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Grid from 'material-ui-next/Grid';
 import ReviewCard from '../components/ReviewCard/ReviewCard';
-import ReviewButtons from '../components/ReviewButtons/ReviewButtons';
 
 const propTypes = {
     dispatch: PropTypes.func,
