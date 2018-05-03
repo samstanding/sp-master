@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card, CardActions, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import SvgIcon from 'material-ui/SvgIcon';
@@ -16,48 +16,42 @@ const GitHubIcon = props => (
   </SvgIcon>
 );
 
-const ProjectCards = () => {
-    return (
-      <div className="ProjectCard">
-        {this.props.list.map((project, index) => (
-                     <div className="CardPadding">
-                <div className="OneCard">
-                    <Card key={index}>
-                    <CardText>
-                 <h1> {project.title} </h1>
-                 <h2> {`${project.person[0].firstName}  ${project.person[0].lastName}`} </h2>
-                 <h4> {`${project.person[0].cohort} ${project.person[0].program}`} </h4>
-                 <div className="Description">
-                  {project.description}
-                </div>
-                 <div className="Image">
-                  <img src={project.projectURL.url} id="review_img_url" alt="project screenshot" />
-                </div>
-               </CardText>
-
-                    <CardActions>
-                 <RaisedButton
-                 href={`${project.github}`}
-                 target="_blank"
-                 label="Github Link"
-                 style={styles.button}
-                 icon={<GitHubIcon />}
-               />
-                 <RaisedButton
-                 href={`${project.appHosted}`}
-                 target="_blank"
-                 label="Hosted App"
-               /> />
-               </CardActions>
-
-                  </Card>
-                  </div>
+const ProjectCards = () => (
+  <div className="ProjectCard">
+    {this.props.list.map(project => (
+      <div className="CardPadding">
+        <div className="OneCard">
+          <Card key={project._id}>
+            <CardText>
+              <h1> {project.title} </h1>
+              <h2> {`${project.person[0].firstName}  ${project.person[0].lastName}`} </h2>
+              <h4> {`${project.person[0].cohort} ${project.person[0].program}`} </h4>
+              <div className="Description">
+                {project.description}
               </div>
-        ))}
+              <div className="Image">
+                <img src={project.projectURL.url} id="review_img_url" alt="project screenshot" />
+              </div>
+            </CardText>
+            <CardActions>
+              <RaisedButton
+                href={`${project.github}`}
+                target="_blank"
+                label="Github Link"
+                style={styles.button}
+                icon={<GitHubIcon />}
+              />
+              <RaisedButton
+                href={`${project.appHosted}`}
+                target="_blank"
+                label="Hosted App"
+              />
+            </CardActions>
+          </Card>
+        </div>
       </div>
-    );
-  }
-
-
+        ))}
+  </div>
+);
 
 export default ProjectCards;

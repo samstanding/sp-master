@@ -29,8 +29,7 @@ class LoginPage extends Component {
       username: '',
       password: '',
     };
-    this.login = this.login.bind(this);
-    // this.handleInputChange = this.handleInputChange.bind(this);
+  
   }
 
   componentDidMount() {
@@ -43,7 +42,7 @@ class LoginPage extends Component {
     }
   }
 
-  login(event) {
+  login = (event) => {
     event.preventDefault();
 
     if (this.state.username === '' || this.state.password === '') {
