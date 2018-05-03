@@ -19,6 +19,7 @@
     "filestack-js": "^0.11.2",
     "filestack-react": "^1.3.9",
     "flexboxgrid": "^6.3.1",
+    "hoek": "^5.0.3",
     "material-ui": "^0.20.0",
     "material-ui-next": "^1.0.0-beta.39",
     "material-ui-search-bar": "^0.4.1",
